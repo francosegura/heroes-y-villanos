@@ -5,13 +5,9 @@ import java.util.Scanner; // explicit Scanner import
 import utils.ConsoleColors;
 
 public class Menu {
-	public static int menu(Scanner input) {
-
-		int selection = 0;
-		
-
+	public static void showMenu() {
 		System.out.println("Menu principal");
-		System.out.println("-------------------------");
+		System.out.println("------------------------------------");
 
 		System.out
 				.println("\n" + ConsoleColors.GREEN_BOLD_BRIGHT + "Administracion de personajes" + ConsoleColors.RESET);
@@ -36,18 +32,32 @@ public class Menu {
 		System.out.println("\t 12 - Listado ordenado de personajes por \n múltiples características");
 
 		System.out.println(ConsoleColors.RED_BRIGHT + "\n\nSeleccione - 1 para salir\n\n\n" + ConsoleColors.RESET);
-		input.nextInt();
+		System.out.println("------------------------------------");
 		System.out.println("\n\n\n");
+
 		/***************************************************/
-		return selection;
 	}
 
 	public static void main(String[] args) {
 		System.out.println(ConsoleColors.BLUE_BOLD + "BIENVENIDO A HEROES Y VILLANOS! \n\n" + ConsoleColors.RESET);
-		int selection = 0;
-		Scanner input = new Scanner(System.in);
-		while (selection != -1) {
-			selection = menu(input);
+		try (Scanner scanner = new Scanner(System.in)) {
+			showMenu();
+			int selection = scanner.nextInt();
+			while (selection != -1) {
+				hacerAlgoAPartirDeSeleccion(selection);
+				selection = scanner.nextInt();
+			}
+		}
+	}
+	
+	private static void hacerAlgoAPartirDeSeleccion(int selection) {
+		switch (selection) {
+		case 1:
+			
+			break;
+
+		default:
+			break;
 		}
 	}
 }
