@@ -7,7 +7,6 @@ import personajes.Personaje;
 
 public class Liga {
 	private String nombre;
-	private String tipo;
 	private List<Object> miembros;
 	
 	public Liga(String nombre) {
@@ -21,14 +20,6 @@ public class Liga {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 	
 	public void agregarMiembro(Object miembro) {
