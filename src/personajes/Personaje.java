@@ -1,5 +1,8 @@
 package personajes;
 
+import utils.ConsoleColors;
+import java.util.Scanner;
+
 public class Personaje {
 	private String nombreReal;
 	private String nombreFicticio;
@@ -10,7 +13,7 @@ public class Personaje {
 		this.nombreReal = nombreReal;
 		this.nombreFicticio = nombreFicticio;
 		this.caracteristicas = caracteristicas;
-		this.tipo= tipo;
+		this.tipo = tipo;
 	}
 
 	public String getTipo() {
@@ -54,5 +57,70 @@ public class Personaje {
 		return this.tipo + "\t\t" + this.nombreReal + "\t" + this.nombreFicticio + "\t"
 				+ this.caracteristicas.getVelocidad() + "\t\t" + this.caracteristicas.getFuerza() + "\t"
 				+ this.caracteristicas.getResistencia() + "\t\t" + this.caracteristicas.getDestreza();
+	}
+
+//	 this.velocidad = velocidad;
+//     this.fuerza = fuerza;
+//     this.resistencia = resistencia;
+//     this.destreza = destreza;
+
+	public static Personaje crearPersonaje() {
+		System.out.println("\n\n\n\n" + ConsoleColors.BLUE_BOLD_BRIGHT + "Bienvenido a la creacion de personaje"
+				+ ConsoleColors.RESET);
+		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Primero seleccionemos el tipo. Por favor elija "
+				+ ConsoleColors.BLUE_BRIGHT + "(1)" + ConsoleColors.RESET + " si desea crear un heroe, o "
+				+ ConsoleColors.BLUE_BRIGHT + "(2)" + ConsoleColors.RESET + " si desea crear un villano. "
+				+ ConsoleColors.RESET);
+		Scanner scanner = new Scanner(System.in);
+		int tipoDePersonaje = scanner.nextInt();
+		String tipoDePersonajeTexto;
+		if(tipoDePersonaje == 1) {
+			tipoDePersonajeTexto = "Heroe";
+		} else if(tipoDePersonaje == 2) {
+			tipoDePersonajeTexto = "Villano";			
+		} else {
+			System.out.println("\n" + ConsoleColors.RED_BRIGHT
+					+ "Opcion incorrecta. Volviendo al menu.... " + ConsoleColors.RESET);
+			scanner.close();
+			return null;
+		}
+		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT
+				+ "Ahora vamos con el nombre real. Puede escribirlo a continuacion: " + ConsoleColors.RESET);
+		String nombreReal = scanner.next();
+		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT
+				+ "Genial! Continuamos con el nombre ficticio. Puede escribirlo a continuacion: "
+				+ ConsoleColors.RESET);
+		String nombreFicticio = scanner.next();
+		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT
+				+ "Buen nombre! Ahora definiremos sus habilidades(Recuerde que son numericas). \nComencemos con la velocidad: "
+				+ ConsoleColors.RESET);
+		int velocidad = scanner.nextInt();
+		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Continuamos con la fuerza: " + ConsoleColors.RESET);
+		int fuerza = scanner.nextInt();
+		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Seguimos con la resistencia: " + ConsoleColors.RESET);
+		int resistencia = scanner.nextInt();
+		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Finalizamos con la destreza: " + ConsoleColors.RESET);
+		int destreza = scanner.nextInt();
+		
+		System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT
+				+ "Felicidades! Su personaje fue creado de la siguiente manera: " + ConsoleColors.RESET);
+		System.out
+				.println(ConsoleColors.BLUE_BRIGHT + "Tipo: " + tipoDePersonajeTexto + ConsoleColors.RESET);
+		System.out
+		.println(ConsoleColors.BLUE_BRIGHT + "Nombre Real: " + nombreReal + ConsoleColors.RESET);
+		System.out
+		.println(ConsoleColors.BLUE_BRIGHT + "Nombre Ficticio: " + nombreFicticio + ConsoleColors.RESET);
+		System.out
+		.println(ConsoleColors.BLUE_BRIGHT + "Velocidad: " + velocidad + ConsoleColors.RESET);
+		System.out
+		.println(ConsoleColors.BLUE_BRIGHT + "Fuerza: " + fuerza + ConsoleColors.RESET);
+		System.out
+		.println(ConsoleColors.BLUE_BRIGHT + "Resistencia: " + resistencia + ConsoleColors.RESET);
+		System.out
+		.println(ConsoleColors.BLUE_BRIGHT + "Destreza: " + destreza + ConsoleColors.RESET);
+		
+		scanner.close();
+		return new Personaje(tipoDePersonajeTexto, nombreReal, nombreFicticio,
+				new Caracteristicas(velocidad, fuerza, resistencia, destreza));
 	}
 }

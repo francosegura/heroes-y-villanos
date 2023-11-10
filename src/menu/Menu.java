@@ -54,7 +54,7 @@ public class Menu {
 
 			while (selection != -1) {
 				hacerAlgoAPartirDeSeleccion(selection);
-				System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT
+				System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 						+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 				selection = scanner.nextInt();
 			}
@@ -92,9 +92,16 @@ public class Menu {
 					+ "! Logramos cargar los siguientes personajes: \n");
 			imprimirPersonajes();
 			break;
+		case 2:
+			System.out.println("\n\nPor supuesto! Vayamos a crear un personaje nuevo");
+			Personaje nuevoPersonaje = Personaje.crearPersonaje();
+			if(nuevoPersonaje instanceof Personaje) {
+				personajes.add(nuevoPersonaje);
+			}
+			break;
 		case 3:
 			if(personajes.size() == 0) {				
-				System.out.println("\n\nAun no ha cargado ningun personaje. Puede hacerlo mediante la opcion 1");
+				System.out.println("\n\nAun no ha cargado ningun personaje. Puede hacerlo mediante las opciones 1 o 2");
 				break;
 			}
 			System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: ");
