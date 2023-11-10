@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import archivos.Archivos;
+import liga.Liga;
 import personajes.Personaje;
 import utils.ConsoleColors;
 
 public class Menu {
 	private static ArrayList<Personaje> personajes = new ArrayList<Personaje>();
+	private static ArrayList<Liga> ligas = new ArrayList<Liga>();
 
 	public static void showMenu() {
 		System.out.println("Menu principal");
@@ -36,7 +38,8 @@ public class Menu {
 				"\t 11 - Todos los personajes o ligas que venzan a un\n personaje dado para cierta característica");
 		System.out.println("\t 12 - Listado ordenado de personajes por \n múltiples características");
 
-		System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT + " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
+		System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT + " o - 1 para salir\n\n\n"
+				+ ConsoleColors.RESET);
 		System.out.println("------------------------------------");
 		System.out.println("\n\n\n");
 
@@ -51,7 +54,8 @@ public class Menu {
 
 			while (selection != -1) {
 				hacerAlgoAPartirDeSeleccion(selection);
-				System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT + " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
+				System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT
+						+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 				selection = scanner.nextInt();
 			}
 		}
@@ -62,8 +66,17 @@ public class Menu {
 		for (Personaje personaje : personajes) {
 			personajesImprimibles = personajesImprimibles.concat("\n" + personaje);
 		}
-System.out.println("Heroe/Villano\tNombreReal\tNombrePersonaje\tVelocidad\tFuerza\tResistencia\tDestreza");
+		System.out.println("Heroe/Villano\tNombreReal\tNombrePersonaje\tVelocidad\tFuerza\tResistencia\tDestreza");
 		System.out.println(ConsoleColors.BLUE + personajesImprimibles + ConsoleColors.RESET);
+	}
+
+	private static void imprimirLigas() {
+		String ligasImprimibles = "";
+		for (Liga liga : ligas) {
+			ligasImprimibles = ligasImprimibles.concat("\n" + liga);
+		}
+		System.out.println("Nombre\t\t\tMiembros");
+		System.out.println(ConsoleColors.BLUE + ligasImprimibles + ConsoleColors.RESET);
 	}
 
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
@@ -88,6 +101,16 @@ System.out.println("Heroe/Villano\tNombreReal\tNombrePersonaje\tVelocidad\tFuerz
 //			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
 //			String nombreArchivo = scanner.next();
 			Archivos.guardarPersonajesEnArchivo("Ponele");
+			break;
+		case 5:
+//			Scanner scanner = new Scanner(System.in);
+//				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
+//				String nombreArchivo = scanner.next();
+
+			ligas = Archivos.cargarLigasDesdeArchivo("ligas.txt");
+			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
+					+ "! Logramos cargar las siguientes ligas: \n");
+			imprimirLigas();
 			break;
 
 		default:

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import liga.Liga;
 import personajes.Caracteristicas;
 import personajes.Personaje;
 
@@ -42,9 +43,37 @@ public class Archivos {
 
 		return personajes;
 	}
-	
+
 	public static void guardarPersonajesEnArchivo(String file) {
 //		TODO: Hacer
-		
+
+	}
+
+	public static ArrayList<Liga> cargarLigasDesdeArchivo(String file) {
+		ArrayList<Liga> ligas = new ArrayList<Liga>();
+		String nombreArchivo = new File(file).getAbsolutePath();
+		try {
+			Scanner scanner = new Scanner(new File(nombreArchivo));
+
+			while (scanner.hasNextLine()) {
+				String linea = scanner.nextLine();
+				String[] datos = linea.split(", ");
+				Liga liga = new Liga(datos[0]);
+				for (String miembro : datos) {
+					liga.agregarMiembro(miembro);
+				}
+				ligas.add(liga);
+			}
+
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return ligas;
+	}
+
+	public static void guardarLigasEnArchivo(String file) {
+//		TODO: Hacer
+
 	}
 }

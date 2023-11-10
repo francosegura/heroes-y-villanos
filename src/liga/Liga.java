@@ -7,11 +7,11 @@ import personajes.Personaje;
 
 public class Liga {
 	private String nombre;
-	private List<Object> miembros;
+	private List<String> miembros;
 	
 	public Liga(String nombre) {
 		this.nombre = nombre;
-		this.miembros = new ArrayList<>();
+		this.miembros = new ArrayList<String>();
 	}
 		
 	public String getNombre() {
@@ -22,14 +22,14 @@ public class Liga {
 		this.nombre = nombre;
 	}
 	
-	public void agregarMiembro(Object miembro) {
+	public void agregarMiembro(String miembro) {
 		miembros.add(miembro);
 	}// Hacer individualmente o para agregar subligas tambien???
-
-	public boolean agregarCompetidor(Personaje competidor) {
-		miembros.add(competidor);
-		return false;
-	}
+//
+//	public boolean agregarCompetidor(Personaje competidor) {
+//		miembros.add(competidor);
+//		return false;
+//	}
 
 	public double calcularPromedioCaracteristica(String caracteristica) {
 		double sumaCaracteristica = 0;
@@ -51,5 +51,13 @@ public class Liga {
 		} else {
 			return 0;
 		}
+	}
+	@Override
+	public String toString() {
+		String miembrosImprimibles = "";
+		for (String miembro : this.miembros) {
+			miembrosImprimibles  = miembrosImprimibles.concat("\t\t" + miembro);
+		}
+		return nombre + miembrosImprimibles;
 	}
 }
