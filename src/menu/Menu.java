@@ -36,7 +36,7 @@ public class Menu {
 				"\t 11 - Todos los personajes o ligas que venzan a un\n personaje dado para cierta característica");
 		System.out.println("\t 12 - Listado ordenado de personajes por \n múltiples características");
 
-		System.out.println(ConsoleColors.RED_BRIGHT + "\n\nSeleccione - 1 para salir\n\n\n" + ConsoleColors.RESET);
+		System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT + " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 		System.out.println("------------------------------------");
 		System.out.println("\n\n\n");
 
@@ -51,6 +51,7 @@ public class Menu {
 
 			while (selection != -1) {
 				hacerAlgoAPartirDeSeleccion(selection);
+				System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT + " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 				selection = scanner.nextInt();
 			}
 		}
@@ -62,18 +63,20 @@ public class Menu {
 			personajesImprimibles = personajesImprimibles.concat("\n" + personaje.getNombreFicticio());
 		}
 
-		return personajesImprimibles;
+		return ConsoleColors.BLUE + personajesImprimibles + ConsoleColors.RESET;
 	}
 
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
 		switch (selection) {
 		case 1:
+//			Scanner scanner = new Scanner(System.in);
 //				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
 //				String nombreArchivo = scanner.next();
 
 			personajes = Archivos.cargarLigasDesdeArchivo("personajes.txt");
 
-			System.out.println("\n\nFelicidades! Logramos cargar los siguientes personajes: \n" + imprimirPersonajes());
+			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
+					+ "! Logramos cargar los siguientes personajes: \n" + imprimirPersonajes());
 
 //
 //			Heroe p1 = new Heroe("Fran", "Fran", new Caracteristicas(12, 10, 9, 8));
@@ -81,6 +84,7 @@ public class Menu {
 			break;
 
 		default:
+			System.out.println(ConsoleColors.PURPLE_BRIGHT + "\nNo implementado aun x.x\n\n" + ConsoleColors.RESET);
 			break;
 		}
 	}
