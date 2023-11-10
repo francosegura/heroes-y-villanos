@@ -1,10 +1,15 @@
 package menu;
 
-import java.util.Scanner; // explicit Scanner import
+import java.util.ArrayList;
+import java.util.Scanner;
 
+import archivos.Archivos;
+import personajes.Personaje;
 import utils.ConsoleColors;
 
 public class Menu {
+	private static ArrayList<Personaje> personajes = new ArrayList<Personaje>();
+
 	public static void showMenu() {
 		System.out.println("Menu principal");
 		System.out.println("------------------------------------");
@@ -43,17 +48,36 @@ public class Menu {
 		try (Scanner scanner = new Scanner(System.in)) {
 			showMenu();
 			int selection = scanner.nextInt();
+
 			while (selection != -1) {
 				hacerAlgoAPartirDeSeleccion(selection);
 				selection = scanner.nextInt();
 			}
 		}
 	}
-	
+
+	private static String imprimirPersonajes() {
+		String personajesImprimibles = "";
+		for (Personaje personaje : personajes) {
+			personajesImprimibles = personajesImprimibles.concat("\n" + personaje.getNombreFicticio());
+		}
+
+		return personajesImprimibles;
+	}
+
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
 		switch (selection) {
 		case 1:
-			
+//				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
+//				String nombreArchivo = scanner.next();
+
+			personajes = Archivos.cargarLigasDesdeArchivo("personajes.txt");
+
+			System.out.println("\n\nFelicidades! Logramos cargar los siguientes personajes: \n" + imprimirPersonajes());
+
+//
+//			Heroe p1 = new Heroe("Fran", "Fran", new Caracteristicas(12, 10, 9, 8));
+//			Heroe p2 = new Heroe("Cas", "Bebe", new Caracteristicas(9, 10, 12, 8));
 			break;
 
 		default:

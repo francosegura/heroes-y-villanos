@@ -34,4 +34,9 @@ public abstract class Personaje {
 	public void setCaracteristicas(Caracteristicas caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
+	
+	@Override
+	public String toString() {
+		return this.nombreFicticio;
+	}
 }

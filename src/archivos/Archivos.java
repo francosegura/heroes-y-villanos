@@ -2,28 +2,25 @@ package archivos;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import liga.Liga;
 import personajes.Caracteristicas;
 import personajes.Heroe;
+import personajes.Personaje;
 import personajes.Villano;
 
 public class Archivos {
-	public static Liga cargarLigasDesdeArchivo(String nombreArchivo) {
-		Liga ligaPrincipal = new Liga("Liga Principal");
-
+	public static ArrayList<Personaje> cargarLigasDesdeArchivo(String file) {
+		ArrayList<Personaje> personajes = new ArrayList<Personaje>();
+		String nombreArchivo = new File(file).getAbsolutePath();
 		try {
 			Scanner scanner = new Scanner(new File(nombreArchivo));
 
 			while (scanner.hasNextLine()) {
 				String linea = scanner.nextLine();
 				String[] datos = linea.split(", ");
-
-				if (datos[0].equals("Liga")) {
-					Liga subLiga = cargarLigasDesdeArchivo(datos[1] + ".in");
-					ligaPrincipal.agregarMiembro(subLiga);
-				} else if (datos[0].equals("Heroe")) {
+				if (datos[0].equals("Heroe")) {
 					String nombreReal = datos[1];
 					String nombreFicticio = datos[2];
 					double velocidad = Double.parseDouble(datos[3]);
@@ -34,8 +31,8 @@ public class Archivos {
 					Caracteristicas caracteristicas = new Caracteristicas(velocidad, fuerza, resistencia, destreza);
 					Heroe heroe = new Heroe(nombreReal, nombreFicticio, caracteristicas);
 
-					ligaPrincipal.agregarMiembro(heroe);
-				} else if (datos[0].equals("Villano")) {
+					personajes.add(heroe);
+				} else if((datos[0].equals("Villano"))) {
 					String nombreReal = datos[1];
 					String nombreFicticio = datos[2];
 					double velocidad = Double.parseDouble(datos[3]);
@@ -46,7 +43,7 @@ public class Archivos {
 					Caracteristicas caracteristicas = new Caracteristicas(velocidad, fuerza, resistencia, destreza);
 					Villano villano = new Villano(nombreReal, nombreFicticio, caracteristicas);
 
-					ligaPrincipal.agregarMiembro(villano);
+					personajes.add(villano);
 				}
 			}
 
@@ -55,6 +52,6 @@ public class Archivos {
 			e.printStackTrace();
 		}
 
-		return ligaPrincipal;
+		return personajes;
 	}
 }
