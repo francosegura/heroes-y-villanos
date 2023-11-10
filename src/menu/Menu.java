@@ -139,6 +139,13 @@ public class Menu {
 					+ "! Logramos cargar las siguientes ligas: \n");
 			imprimirLigas();
 			break;
+		case 6:
+			System.out.println("\n\nPor supuesto! Vayamos a crear una nueva liga");
+			Liga nuevaLiga = Liga.crearLiga();
+			if (nuevaLiga instanceof Liga) {
+				ligas.add(nuevaLiga);
+			}
+			break;
 		case 7:
 			if (ligas.size() == 0) {
 				System.out.println("\n\nAun no ha cargado ninguna liga. Puede hacerlo mediante la opcion 5");

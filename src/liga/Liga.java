@@ -3,11 +3,14 @@ package liga;
 import java.util.ArrayList;
 import java.util.List;
 
+import personajes.Caracteristicas;
 import personajes.Personaje;
 
 public class Liga {
 	private String nombre;
 	private List<String> miembros;
+	private String tipo;
+	private Caracteristicas promedioCaracteristicas;
 	
 	public Liga(String nombre) {
 		this.nombre = nombre;
@@ -24,7 +27,7 @@ public class Liga {
 	
 	public void agregarMiembro(String miembro) {
 		miembros.add(miembro);
-	}// Hacer individualmente o para agregar subligas tambien???
+	}
 //
 //	public boolean agregarCompetidor(Personaje competidor) {
 //		miembros.add(competidor);
@@ -59,5 +62,18 @@ public class Liga {
 			miembrosImprimibles  = miembrosImprimibles.concat("\n\t\t\t\t" + miembro);
 		}
 		return nombre + miembrosImprimibles;
+	}
+
+	public static Liga crearLiga() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public Caracteristicas getPromedioCaracteristicas() {
+		return promedioCaracteristicas;
 	}
 }
