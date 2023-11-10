@@ -57,13 +57,13 @@ public class Menu {
 		}
 	}
 
-	private static String imprimirPersonajes() {
+	private static void imprimirPersonajes() {
 		String personajesImprimibles = "";
 		for (Personaje personaje : personajes) {
-			personajesImprimibles = personajesImprimibles.concat("\n" + personaje.getNombreFicticio());
+			personajesImprimibles = personajesImprimibles.concat("\n" + personaje);
 		}
-
-		return ConsoleColors.BLUE + personajesImprimibles + ConsoleColors.RESET;
+System.out.println("Heroe/Villano\tNombreReal\tNombrePersonaje\tVelocidad\tFuerza\tResistencia\tDestreza");
+		System.out.println(ConsoleColors.BLUE + personajesImprimibles + ConsoleColors.RESET);
 	}
 
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
@@ -76,11 +76,12 @@ public class Menu {
 			personajes = Archivos.cargarLigasDesdeArchivo("personajes.txt");
 
 			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
-					+ "! Logramos cargar los siguientes personajes: \n" + imprimirPersonajes());
-
-//
-//			Heroe p1 = new Heroe("Fran", "Fran", new Caracteristicas(12, 10, 9, 8));
-//			Heroe p2 = new Heroe("Cas", "Bebe", new Caracteristicas(9, 10, 12, 8));
+					+ "! Logramos cargar los siguientes personajes: \n");
+			imprimirPersonajes();
+			break;
+		case 3:
+			System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: ");
+			imprimirPersonajes();
 			break;
 
 		default:
