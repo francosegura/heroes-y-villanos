@@ -56,7 +56,7 @@ public class Liga {
 	public String toString() {
 		String miembrosImprimibles = "";
 		for (String miembro : this.miembros) {
-			miembrosImprimibles  = miembrosImprimibles.concat("\t\t" + miembro);
+			miembrosImprimibles  = miembrosImprimibles.concat("\n\t\t\t\t" + miembro);
 		}
 		return nombre + miembrosImprimibles;
 	}

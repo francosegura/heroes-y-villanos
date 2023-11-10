@@ -73,7 +73,7 @@ public class Menu {
 	private static void imprimirLigas() {
 		String ligasImprimibles = "";
 		for (Liga liga : ligas) {
-			ligasImprimibles = ligasImprimibles.concat("\n" + liga);
+			ligasImprimibles = ligasImprimibles.concat("\n\n\n" + liga);
 		}
 		System.out.println("Nombre\t\t\tMiembros");
 		System.out.println(ConsoleColors.BLUE + ligasImprimibles + ConsoleColors.RESET);
