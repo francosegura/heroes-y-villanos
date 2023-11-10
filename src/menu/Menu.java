@@ -75,7 +75,7 @@ public class Menu {
 		for (Liga liga : ligas) {
 			ligasImprimibles = ligasImprimibles.concat("\n\n\n" + liga);
 		}
-		System.out.println("Nombre\t\t\tMiembros");
+		System.out.println("Nombre\t\t\t	Miembros");
 		System.out.println(ConsoleColors.BLUE + ligasImprimibles + ConsoleColors.RESET);
 	}
 
@@ -86,7 +86,7 @@ public class Menu {
 //				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
 //				String nombreArchivo = scanner.next();
 
-			personajes = Archivos.cargarPersonajesDesdeArchivo("personajes.txt");
+			personajes = Archivos.cargarPersonajesDesdeArchivo("personajes.in");
 
 			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 					+ "! Logramos cargar los siguientes personajes: \n");
@@ -111,7 +111,7 @@ public class Menu {
 //				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
 //				String nombreArchivo = scanner.next();
 
-			ligas = Archivos.cargarLigasDesdeArchivo("ligas.txt");
+			ligas = Archivos.cargarLigasDesdeArchivo("ligas.in");
 			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 					+ "! Logramos cargar las siguientes ligas: \n");
 			imprimirLigas();
@@ -125,6 +125,12 @@ public class Menu {
 			imprimirLigas();
 			break;
 		case 8:
+//			Scanner scanner = new Scanner(System.in);
+//			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
+//			String nombreArchivo = scanner.next();
+			Archivos.guardarPersonajesEnArchivo("Ponele");
+			break;
+		case 9:
 //			Scanner scanner = new Scanner(System.in);
 //			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
 //			String nombreArchivo = scanner.next();
