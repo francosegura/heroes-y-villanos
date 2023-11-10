@@ -9,7 +9,7 @@ import personajes.Caracteristicas;
 import personajes.Personaje;
 
 public class Archivos {
-	public static ArrayList<Personaje> cargarLigasDesdeArchivo(String file) {
+	public static ArrayList<Personaje> cargarPersonajesDesdeArchivo(String file) {
 		ArrayList<Personaje> personajes = new ArrayList<Personaje>();
 		String nombreArchivo = new File(file).getAbsolutePath();
 		try {
@@ -41,5 +41,10 @@ public class Archivos {
 		}
 
 		return personajes;
+	}
+	
+	public static void guardarPersonajesEnArchivo(String file) {
+//		TODO: Hacer
+		
 	}
 }

@@ -73,7 +73,7 @@ System.out.println("Heroe/Villano\tNombreReal\tNombrePersonaje\tVelocidad\tFuerz
 //				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
 //				String nombreArchivo = scanner.next();
 
-			personajes = Archivos.cargarLigasDesdeArchivo("personajes.txt");
+			personajes = Archivos.cargarPersonajesDesdeArchivo("personajes.txt");
 
 			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 					+ "! Logramos cargar los siguientes personajes: \n");
@@ -82,6 +82,12 @@ System.out.println("Heroe/Villano\tNombreReal\tNombrePersonaje\tVelocidad\tFuerz
 		case 3:
 			System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: ");
 			imprimirPersonajes();
+			break;
+		case 4:
+//			Scanner scanner = new Scanner(System.in);
+//			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
+//			String nombreArchivo = scanner.next();
+			Archivos.guardarPersonajesEnArchivo("Ponele");
 			break;
 
 		default:
