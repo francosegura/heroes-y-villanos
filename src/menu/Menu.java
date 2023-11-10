@@ -93,6 +93,10 @@ public class Menu {
 			imprimirPersonajes();
 			break;
 		case 3:
+			if(personajes.size() == 0) {				
+				System.out.println("\n\nAun no ha cargado ningun personaje. Puede hacerlo mediante la opcion 1");
+				break;
+			}
 			System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: ");
 			imprimirPersonajes();
 			break;
@@ -111,6 +115,20 @@ public class Menu {
 			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 					+ "! Logramos cargar las siguientes ligas: \n");
 			imprimirLigas();
+			break;
+		case 7:
+			if(ligas.size() == 0) {				
+				System.out.println("\n\nAun no ha cargado ninguna liga. Puede hacerlo mediante la opcion 5");
+				break;
+			}
+			System.out.println("\n\nPor supuesto! Aqui tienes el listado de ligas cargadas: ");
+			imprimirLigas();
+			break;
+		case 8:
+//			Scanner scanner = new Scanner(System.in);
+//			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
+//			String nombreArchivo = scanner.next();
+			Archivos.guardarPersonajesEnArchivo("Ponele");
 			break;
 
 		default:
