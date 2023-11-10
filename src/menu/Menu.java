@@ -52,13 +52,29 @@ public class Menu {
 			showMenu();
 			int selection = scanner.nextInt();
 
-			while (selection != -1) {
+			while (true) {
+				if (selection == -1) {
+					System.out.println(
+							"\n\nSi sale perdera toda la informacion cargada (Con excepcion de los archivos ya generados. Desea continuar? "
+									+ ConsoleColors.RED_BRIGHT
+									+ "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
+									+ ConsoleColors.RESET);
+					selection = scanner.nextInt();
+					if (selection == 2) {
+						selection = 0;
+					} else {
+						break;
+					}
+				}
 				hacerAlgoAPartirDeSeleccion(selection);
 				System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 						+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 				selection = scanner.nextInt();
+				System.out.println(selection);
+				break;
 			}
 		}
+		return;
 	}
 
 	private static void imprimirPersonajes() {
@@ -95,12 +111,12 @@ public class Menu {
 		case 2:
 			System.out.println("\n\nPor supuesto! Vayamos a crear un personaje nuevo");
 			Personaje nuevoPersonaje = Personaje.crearPersonaje();
-			if(nuevoPersonaje instanceof Personaje) {
+			if (nuevoPersonaje instanceof Personaje) {
 				personajes.add(nuevoPersonaje);
 			}
 			break;
 		case 3:
-			if(personajes.size() == 0) {				
+			if (personajes.size() == 0) {
 				System.out.println("\n\nAun no ha cargado ningun personaje. Puede hacerlo mediante las opciones 1 o 2");
 				break;
 			}
@@ -124,7 +140,7 @@ public class Menu {
 			imprimirLigas();
 			break;
 		case 7:
-			if(ligas.size() == 0) {				
+			if (ligas.size() == 0) {
 				System.out.println("\n\nAun no ha cargado ninguna liga. Puede hacerlo mediante la opcion 5");
 				break;
 			}
