@@ -9,8 +9,8 @@ import personajes.Personaje;
 public class Liga {
 	private String nombre;
 	private List<Object> miembros;
-	private String tipo;
-	private Caracteristicas sumatoriaCaracteristicas;
+	private String tipo = "";
+	private Caracteristicas sumatoriaCaracteristicas = new Caracteristicas(0, 0, 0, 0);
 
 	public Liga(String nombre) {
 		this.nombre = nombre;
@@ -77,16 +77,16 @@ public class Liga {
 
 	@Override
 	public String toString() {
-		String miembrosImprimibles = "";
+		String miembrosImprimibles = "\n\nMiembros: \n";
 		for (Object miembro : this.miembros) {
 			if (miembro instanceof Liga) {
-				miembrosImprimibles = miembrosImprimibles.concat("\n\t\t\t\t" + ((Liga) miembro).getNombre());
+				miembrosImprimibles = miembrosImprimibles.concat(((Liga) miembro).getNombre());
 			} else {
 				miembrosImprimibles = miembrosImprimibles
-						.concat("\n\t\t\t\t" + ((Personaje) miembro).getNombreFicticio());
+						.concat(((Personaje) miembro).getNombreFicticio());
 			}
 		}
-		return nombre + miembrosImprimibles;
+		return nombre + miembrosImprimibles + "\n\nCaracteristicas: \n" + this.getSumatoriaCaracteristicas() + "\n\nTipo: " + this.tipo;
 	}
 
 	public static Liga crearLiga(ArrayList<Liga> ligasPrecargadas, ArrayList<Personaje> personajesPrecargados) {

@@ -44,7 +44,7 @@ public class Caracteristicas {
     public void setDestreza(double destreza) {
         this.destreza = destreza;
     }
-    
+
     public double getCaracteristica(String nombreCaracteristica) {
         switch (nombreCaracteristica) {
             case "Velocidad":
@@ -56,8 +56,13 @@ public class Caracteristicas {
             case "Destreza":
                 return destreza;
             default:
-                throw new IllegalArgumentException("Característica no válida");
+                throw new IllegalArgumentException("Caracterï¿½stica no vï¿½lida");
         }
     }
-}
 
+    @Override
+    public String toString() {
+        return "Velocidad: " + velocidad + "\nDestreza: " + destreza + "\nFuerza: " + fuerza + "\nResistencia: "
+                + resistencia;
+    }
+}
