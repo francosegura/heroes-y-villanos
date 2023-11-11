@@ -53,28 +53,26 @@ public class Menu {
 			int selection = scanner.nextInt();
 
 			while (true) {
-				if (selection == -1) {
-					System.out.println(
-							"\n\nSi sale perdera toda la informacion cargada (Con excepcion de los archivos ya generados. Desea continuar? "
-									+ ConsoleColors.RED_BRIGHT
-									+ "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
-									+ ConsoleColors.RESET);
-					selection = scanner.nextInt();
-					if (selection == 2) {
-						selection = 0;
-					} else {
-						break;
-					}
-				}
+//				if (selection == -1) {
+//					System.out.println(
+//							"\n\nSi sale perdera toda la informacion cargada (Con excepcion de los archivos ya generados. Desea continuar? "
+//									+ ConsoleColors.RED_BRIGHT
+//									+ "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
+//									+ ConsoleColors.RESET);
+//					selection = scanner.nextInt();
+//					if (selection == 2) {
+//						selection = 0;
+//					} else {
+//						break;
+//					}
+//				}
 				hacerAlgoAPartirDeSeleccion(selection);
 				System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 						+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 				selection = scanner.nextInt();
 				System.out.println(selection);
-				break;
 			}
 		}
-		return;
 	}
 
 	private static void imprimirPersonajes() {
@@ -134,14 +132,14 @@ public class Menu {
 //				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
 //				String nombreArchivo = scanner.next();
 
-			ligas = Archivos.cargarLigasDesdeArchivo("ligas.in");
+			ligas = Archivos.cargarLigasDesdeArchivo("ligas.in", ligas, personajes);
 			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 					+ "! Logramos cargar las siguientes ligas: \n");
 			imprimirLigas();
 			break;
 		case 6:
 			System.out.println("\n\nPor supuesto! Vayamos a crear una nueva liga");
-			Liga nuevaLiga = Liga.crearLiga();
+			Liga nuevaLiga = Liga.crearLiga(ligas, personajes);
 			if (nuevaLiga instanceof Liga) {
 				ligas.add(nuevaLiga);
 			}

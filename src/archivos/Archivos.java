@@ -45,11 +45,12 @@ public class Archivos {
 	}
 
 	public static void guardarPersonajesEnArchivo(String file) {
-//		TODO: Hacer
+		// TODO: Hacer
 
 	}
 
-	public static ArrayList<Liga> cargarLigasDesdeArchivo(String file) {
+	public static ArrayList<Liga> cargarLigasDesdeArchivo(String file, ArrayList<Liga> ligasPrecargadas,
+			ArrayList<Personaje> personajesPrecargados) {
 		ArrayList<Liga> ligas = new ArrayList<Liga>();
 		String nombreArchivo = new File(file).getAbsolutePath();
 		try {
@@ -60,7 +61,7 @@ public class Archivos {
 				String[] datos = linea.split(", ");
 				Liga liga = new Liga(datos[0]);
 				for (String miembro : datos) {
-					liga.agregarMiembro(miembro);
+					liga.agregarMiembro(miembro, ligasPrecargadas, personajesPrecargados);
 				}
 				ligas.add(liga);
 			}
@@ -73,7 +74,7 @@ public class Archivos {
 	}
 
 	public static void guardarLigasEnArchivo(String file) {
-//		TODO: Hacer
+		// TODO: Hacer
 
 	}
 }

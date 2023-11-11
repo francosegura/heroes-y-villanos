@@ -1,6 +1,8 @@
 package personajes;
 
 import utils.ConsoleColors;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Personaje {
@@ -59,10 +61,6 @@ public class Personaje {
 				+ this.caracteristicas.getResistencia() + "\t\t" + this.caracteristicas.getDestreza();
 	}
 
-//	 this.velocidad = velocidad;
-//     this.fuerza = fuerza;
-//     this.resistencia = resistencia;
-//     this.destreza = destreza;
 
 	public static Personaje crearPersonaje() {
 		System.out.println("\n\n\n\n" + ConsoleColors.BLUE_BOLD_BRIGHT + "Bienvenido a la creacion de personaje"
@@ -74,10 +72,10 @@ public class Personaje {
 		Scanner scanner = new Scanner(System.in);
 		int tipoDePersonaje = scanner.nextInt();
 		String tipoDePersonajeTexto;
-		if(tipoDePersonaje == 1) {
+		if (tipoDePersonaje == 1) {
 			tipoDePersonajeTexto = "Heroe";
-		} else if(tipoDePersonaje == 2) {
-			tipoDePersonajeTexto = "Villano";			
+		} else if (tipoDePersonaje == 2) {
+			tipoDePersonajeTexto = "Villano";
 		} else {
 			System.out.println("\n" + ConsoleColors.RED_BRIGHT
 					+ "Opcion incorrecta. Volviendo al menu.... " + ConsoleColors.RESET);
@@ -101,26 +99,35 @@ public class Personaje {
 		int resistencia = scanner.nextInt();
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Finalizamos con la destreza: " + ConsoleColors.RESET);
 		int destreza = scanner.nextInt();
-		
+
 		System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT
 				+ "Felicidades! Su personaje fue creado de la siguiente manera: " + ConsoleColors.RESET);
 		System.out
 				.println(ConsoleColors.BLUE_BRIGHT + "Tipo: " + tipoDePersonajeTexto + ConsoleColors.RESET);
 		System.out
-		.println(ConsoleColors.BLUE_BRIGHT + "Nombre Real: " + nombreReal + ConsoleColors.RESET);
+				.println(ConsoleColors.BLUE_BRIGHT + "Nombre Real: " + nombreReal + ConsoleColors.RESET);
 		System.out
-		.println(ConsoleColors.BLUE_BRIGHT + "Nombre Ficticio: " + nombreFicticio + ConsoleColors.RESET);
+				.println(ConsoleColors.BLUE_BRIGHT + "Nombre Ficticio: " + nombreFicticio + ConsoleColors.RESET);
 		System.out
-		.println(ConsoleColors.BLUE_BRIGHT + "Velocidad: " + velocidad + ConsoleColors.RESET);
+				.println(ConsoleColors.BLUE_BRIGHT + "Velocidad: " + velocidad + ConsoleColors.RESET);
 		System.out
-		.println(ConsoleColors.BLUE_BRIGHT + "Fuerza: " + fuerza + ConsoleColors.RESET);
+				.println(ConsoleColors.BLUE_BRIGHT + "Fuerza: " + fuerza + ConsoleColors.RESET);
 		System.out
-		.println(ConsoleColors.BLUE_BRIGHT + "Resistencia: " + resistencia + ConsoleColors.RESET);
+				.println(ConsoleColors.BLUE_BRIGHT + "Resistencia: " + resistencia + ConsoleColors.RESET);
 		System.out
-		.println(ConsoleColors.BLUE_BRIGHT + "Destreza: " + destreza + ConsoleColors.RESET);
-		
+				.println(ConsoleColors.BLUE_BRIGHT + "Destreza: " + destreza + ConsoleColors.RESET);
+
 		scanner.close();
 		return new Personaje(tipoDePersonajeTexto, nombreReal, nombreFicticio,
 				new Caracteristicas(velocidad, fuerza, resistencia, destreza));
+	}
+
+	public static Personaje buscarMiembroEnPersonajes(ArrayList<Personaje> personajes, String miembroABuscar) {
+		for (Personaje personaje : personajes) {
+			if (personaje.nombreFicticio.toLowerCase().trim().contains(miembroABuscar.toLowerCase().trim())) {
+				return personaje;
+			}
+		}
+		return null;
 	}
 }
