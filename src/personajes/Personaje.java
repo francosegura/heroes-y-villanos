@@ -117,7 +117,7 @@ public class Personaje {
 		System.out
 				.println(ConsoleColors.BLUE_BRIGHT + "Destreza: " + destreza + ConsoleColors.RESET);
 
-		scanner.close();
+		// scanner.close();
 		return new Personaje(tipoDePersonajeTexto, nombreReal, nombreFicticio,
 				new Caracteristicas(velocidad, fuerza, resistencia, destreza));
 	}

@@ -53,24 +53,24 @@ public class Menu {
 			int selection = scanner.nextInt();
 
 			while (true) {
-//				if (selection == -1) {
-//					System.out.println(
-//							"\n\nSi sale perdera toda la informacion cargada (Con excepcion de los archivos ya generados. Desea continuar? "
-//									+ ConsoleColors.RED_BRIGHT
-//									+ "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
-//									+ ConsoleColors.RESET);
-//					selection = scanner.nextInt();
-//					if (selection == 2) {
-//						selection = 0;
-//					} else {
-//						break;
-//					}
-//				}
+				// if (selection == -1) {
+				// System.out.println(
+				// "\n\nSi sale perdera toda la informacion cargada (Con excepcion de los
+				// archivos ya generados. Desea continuar? "
+				// + ConsoleColors.RED_BRIGHT
+				// + "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
+				// + ConsoleColors.RESET);
+				// selection = scanner.nextInt();
+				// if (selection == 2) {
+				// selection = 0;
+				// } else {
+				// break;
+				// }
+				// }
 				hacerAlgoAPartirDeSeleccion(selection);
 				System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 						+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 				selection = scanner.nextInt();
-				System.out.println(selection);
 			}
 		}
 	}
@@ -95,79 +95,88 @@ public class Menu {
 
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
 		switch (selection) {
-		case 1:
-//			Scanner scanner = new Scanner(System.in);
-//				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
-//				String nombreArchivo = scanner.next();
+			case 1:
+				// Scanner scanner = new Scanner(System.in);
+				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
+				// ");
+				// String nombreArchivo = scanner.next();
+				ArrayList<Personaje> personajesDesdeArchivo = Archivos.cargarPersonajesDesdeArchivo("personajes.in");
+				for (Personaje personajeDesdeArchivo : personajesDesdeArchivo) {
+					personajes.add(personajeDesdeArchivo);
+				}
 
-			personajes = Archivos.cargarPersonajesDesdeArchivo("personajes.in");
-
-			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
-					+ "! Logramos cargar los siguientes personajes: \n");
-			imprimirPersonajes();
-			break;
-		case 2:
-			System.out.println("\n\nPor supuesto! Vayamos a crear un personaje nuevo");
-			Personaje nuevoPersonaje = Personaje.crearPersonaje();
-			if (nuevoPersonaje instanceof Personaje) {
-				personajes.add(nuevoPersonaje);
-			}
-			break;
-		case 3:
-			if (personajes.size() == 0) {
-				System.out.println("\n\nAun no ha cargado ningun personaje. Puede hacerlo mediante las opciones 1 o 2");
+				System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
+						+ "! Logramos cargar los siguientes personajes: \n");
+				imprimirPersonajes();
 				break;
-			}
-			System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: ");
-			imprimirPersonajes();
-			break;
-		case 4:
-//			Scanner scanner = new Scanner(System.in);
-//			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
-//			String nombreArchivo = scanner.next();
-			Archivos.guardarPersonajesEnArchivo("Ponele");
-			break;
-		case 5:
-//			Scanner scanner = new Scanner(System.in);
-//				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
-//				String nombreArchivo = scanner.next();
-
-			ligas = Archivos.cargarLigasDesdeArchivo("ligas.in", ligas, personajes);
-			System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
-					+ "! Logramos cargar las siguientes ligas: \n");
-			imprimirLigas();
-			break;
-		case 6:
-			System.out.println("\n\nPor supuesto! Vayamos a crear una nueva liga");
-			Liga nuevaLiga = Liga.crearLiga(ligas, personajes);
-			if (nuevaLiga instanceof Liga) {
-				ligas.add(nuevaLiga);
-			}
-			break;
-		case 7:
-			if (ligas.size() == 0) {
-				System.out.println("\n\nAun no ha cargado ninguna liga. Puede hacerlo mediante la opcion 5");
+			case 2:
+				System.out.println("\n\nPor supuesto! Vayamos a crear un personaje nuevo");
+				Personaje nuevoPersonaje = Personaje.crearPersonaje();
+				System.out.println(nuevoPersonaje);
+				if (nuevoPersonaje instanceof Personaje) {
+					personajes.add(nuevoPersonaje);
+				}
 				break;
-			}
-			System.out.println("\n\nPor supuesto! Aqui tienes el listado de ligas cargadas: ");
-			imprimirLigas();
-			break;
-		case 8:
-//			Scanner scanner = new Scanner(System.in);
-//			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
-//			String nombreArchivo = scanner.next();
-			Archivos.guardarPersonajesEnArchivo("Ponele");
-			break;
-		case 9:
-//			Scanner scanner = new Scanner(System.in);
-//			System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
-//			String nombreArchivo = scanner.next();
-			Archivos.guardarPersonajesEnArchivo("Ponele");
-			break;
+			case 3:
+				if (personajes.size() == 0) {
+					System.out.println(
+							"\n\nAun no ha cargado ningun personaje. Puede hacerlo mediante las opciones 1 o 2");
+					break;
+				}
+				System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: ");
+				imprimirPersonajes();
+				break;
+			case 4:
+				// Scanner scanner = new Scanner(System.in);
+				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
+				// ");
+				// String nombreArchivo = scanner.next();
+				Archivos.guardarPersonajesEnArchivo("Ponele");
+				break;
+			case 5:
+				// Scanner scanner = new Scanner(System.in);
+				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
+				// ");
+				// String nombreArchivo = scanner.next();
 
-		default:
-			System.out.println(ConsoleColors.PURPLE_BRIGHT + "\nNo implementado aun x.x\n\n" + ConsoleColors.RESET);
-			break;
+				ligas = Archivos.cargarLigasDesdeArchivo("ligas.in", ligas, personajes);
+				System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
+						+ "! Logramos cargar las siguientes ligas: \n");
+				imprimirLigas();
+				break;
+			case 6:
+				System.out.println("\n\nPor supuesto! Vayamos a crear una nueva liga");
+				Liga nuevaLiga = Liga.crearLiga(ligas, personajes);
+				if (nuevaLiga instanceof Liga) {
+					ligas.add(nuevaLiga);
+				}
+				break;
+			case 7:
+				if (ligas.size() == 0) {
+					System.out.println("\n\nAun no ha cargado ninguna liga. Puede hacerlo mediante la opcion 5");
+					break;
+				}
+				System.out.println("\n\nPor supuesto! Aqui tienes el listado de ligas cargadas: ");
+				imprimirLigas();
+				break;
+			case 8:
+				// Scanner scanner = new Scanner(System.in);
+				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
+				// ");
+				// String nombreArchivo = scanner.next();
+				Archivos.guardarPersonajesEnArchivo("Ponele");
+				break;
+			case 9:
+				// Scanner scanner = new Scanner(System.in);
+				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
+				// ");
+				// String nombreArchivo = scanner.next();
+				Archivos.guardarPersonajesEnArchivo("Ponele");
+				break;
+
+			default:
+				System.out.println(ConsoleColors.PURPLE_BRIGHT + "\nNo implementado aun x.x\n\n" + ConsoleColors.RESET);
+				break;
 		}
 	}
 }
