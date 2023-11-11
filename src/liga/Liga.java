@@ -8,15 +8,15 @@ import personajes.Personaje;
 
 public class Liga {
 	private String nombre;
-	private List<String> miembros;
+	private List<Object> miembros;
 	private String tipo;
-	private Caracteristicas promedioCaracteristicas;
-	
+	private Caracteristicas sumatoriaCaracteristicas;
+
 	public Liga(String nombre) {
 		this.nombre = nombre;
-		this.miembros = new ArrayList<String>();
+		this.miembros = new ArrayList<Object>();
 	}
-		
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -24,48 +24,72 @@ public class Liga {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public void agregarMiembro(String miembro) {
-		miembros.add(miembro);
-	}
-//
-//	public boolean agregarCompetidor(Personaje competidor) {
-//		miembros.add(competidor);
-//		return false;
-//	}
 
-	public double calcularPromedioCaracteristica(String caracteristica) {
-		double sumaCaracteristica = 0;
-		int cantidadPersonajes = 0;
+	public void agregarMiembro(String nuevoMiembro, ArrayList<Liga> ligasPrecargadas,
+			ArrayList<Personaje> personajesPrecargados) {
+		Liga miembroComoLiga = buscarMiembroEnLigas(ligasPrecargadas, nuevoMiembro);
+		Personaje miembroComoPersonaje = Personaje.buscarMiembroEnPersonajes(personajesPrecargados, nuevoMiembro);
 
-		for (Object miembro : miembros) {
-			if (miembro instanceof Liga) {
-				Liga subLiga = (Liga) miembro;
-				sumaCaracteristica += subLiga.calcularPromedioCaracteristica(caracteristica);
-			} else if (miembro instanceof Personaje) {
-				Personaje personaje = (Personaje) miembro;
-				sumaCaracteristica += personaje.getCaracteristicas().getCaracteristica(caracteristica);
-				cantidadPersonajes++;
+		// Me fijo si el miembro que quiero agregar existe
+		if (miembroComoLiga == null && miembroComoPersonaje == null) {
+			return;
+		}
+
+		// Me fijo si el nuevo miembro es un personaje
+		if (miembroComoPersonaje != null) {
+			// Me fijo si el nuevo miembro es del mismo tipo que la liga y lo agrego
+			if (this.tipo.length() == 0 || miembroComoPersonaje.getTipo() == this.tipo) {
+				miembros.add(miembroComoPersonaje);
+				this.acumularCaracteristicas(miembroComoPersonaje.getCaracteristicas());
+				this.setTipo(miembroComoPersonaje.getTipo());
 			}
 		}
 
-		if (cantidadPersonajes > 0) {
-			return sumaCaracteristica / cantidadPersonajes;
-		} else {
-			return 0;
+		// Lo mismo pero tratandolo como liga
+		if (miembroComoLiga != null) {
+			if (this.tipo.length() == 0 || miembroComoPersonaje.getTipo() == this.tipo) {
+				miembros.add(miembroComoLiga);
+				this.acumularCaracteristicas(miembroComoLiga.getSumatoriaCaracteristicas());
+				this.setTipo(miembroComoPersonaje.getTipo());
+			}
 		}
+
 	}
+	//
+	// public boolean agregarCompetidor(Personaje competidor) {
+	// miembros.add(competidor);
+	// return false;
+	// }
+
+	public Caracteristicas calcularPromedioCaracteristica() {
+		int cantidadPersonajes = this.miembros.size();
+		if (cantidadPersonajes == 0)
+			return null;
+		Caracteristicas promedioCaracteristicas = new Caracteristicas(0, 0, 0, 0);
+
+		promedioCaracteristicas.setDestreza(this.sumatoriaCaracteristicas.getDestreza() / cantidadPersonajes);
+		promedioCaracteristicas.setFuerza(this.sumatoriaCaracteristicas.getFuerza() / cantidadPersonajes);
+		promedioCaracteristicas.setResistencia(this.sumatoriaCaracteristicas.getResistencia() / cantidadPersonajes);
+		promedioCaracteristicas.setVelocidad(this.sumatoriaCaracteristicas.getVelocidad() / cantidadPersonajes);
+
+		return promedioCaracteristicas;
+	}
+
 	@Override
 	public String toString() {
 		String miembrosImprimibles = "";
-		for (String miembro : this.miembros) {
-			miembrosImprimibles  = miembrosImprimibles.concat("\n\t\t\t\t" + miembro);
+		for (Object miembro : this.miembros) {
+			if (miembro instanceof Liga) {
+				miembrosImprimibles = miembrosImprimibles.concat("\n\t\t\t\t" + ((Liga) miembro).getNombre());
+			} else {
+				miembrosImprimibles = miembrosImprimibles
+						.concat("\n\t\t\t\t" + ((Personaje) miembro).getNombreFicticio());
+			}
 		}
 		return nombre + miembrosImprimibles;
 	}
 
-	public static Liga crearLiga() {
-		// TODO Auto-generated method stub
+	public static Liga crearLiga(ArrayList<Liga> ligasPrecargadas, ArrayList<Personaje> personajesPrecargados) {
 		return null;
 	}
 
@@ -73,7 +97,29 @@ public class Liga {
 		return tipo;
 	}
 
-	public Caracteristicas getPromedioCaracteristicas() {
-		return promedioCaracteristicas;
+	private void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public Caracteristicas getSumatoriaCaracteristicas() {
+		return sumatoriaCaracteristicas;
+	}
+
+	public void acumularCaracteristicas(Caracteristicas nuevas) {
+		this.sumatoriaCaracteristicas.setDestreza(this.sumatoriaCaracteristicas.getDestreza() + nuevas.getDestreza());
+		this.sumatoriaCaracteristicas.setFuerza(this.sumatoriaCaracteristicas.getFuerza() + nuevas.getFuerza());
+		this.sumatoriaCaracteristicas
+				.setResistencia(this.sumatoriaCaracteristicas.getResistencia() + nuevas.getResistencia());
+		this.sumatoriaCaracteristicas
+				.setVelocidad(this.sumatoriaCaracteristicas.getVelocidad() + nuevas.getVelocidad());
+	}
+
+	public static Liga buscarMiembroEnLigas(ArrayList<Liga> ligas, String miembroABuscar) {
+		for (Liga liga : ligas) {
+			if (liga.nombre.trim().toLowerCase().contains(miembroABuscar.trim().toLowerCase())) {
+				return liga;
+			}
+		}
+		return null;
 	}
 }
