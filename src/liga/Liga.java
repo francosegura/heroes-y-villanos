@@ -3,8 +3,10 @@ package liga;
 import java.util.ArrayList;
 import java.util.List;
 
+import menu.Menu;
 import personajes.Caracteristicas;
 import personajes.Personaje;
+import utils.ConsoleColors;
 
 public class Liga {
 	private String nombre;
@@ -91,7 +93,34 @@ public class Liga {
 	}
 
 	public static Liga crearLiga(ArrayList<Liga> ligasPrecargadas, ArrayList<Personaje> personajesPrecargados) {
-		return null;
+		System.out.println("\n\n\n\n" + ConsoleColors.BLUE_BOLD_BRIGHT + "Bienvenido a la creacion de ligas"
+				+ ConsoleColors.RESET);
+		System.out.println("\n"
+				+ "Primero escribiremos el nombre real. Puede escribirlo a continuacion: ");
+		String nombre = Menu.scanner.next();
+		Liga nuevaLiga = new Liga(nombre);
+
+		do {
+			System.out.println("\n" + "Desea agregar miembros?. Por favor elija "
+					+ ConsoleColors.BLUE_BRIGHT + "(1)" + ConsoleColors.RESET + " si desea agregar un miembro, o "
+					+ ConsoleColors.BLUE_BRIGHT + "(2)" + ConsoleColors.RESET + " si desea finalizar. ");
+			int tipoDePersonaje = Menu.scanner.nextInt();
+			if (tipoDePersonaje == 1) {
+				// Agregar
+			} else if (tipoDePersonaje == 2) {
+				// Rebotar
+				break;
+			} else {
+				System.out.println("\n" + ConsoleColors.RED_BRIGHT
+						+ "Opcion incorrecta." + ConsoleColors.RESET);
+				return null;
+			}
+		} while (true);
+		System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT
+				+ "Felicidades! Su liga fue creada de la siguiente manera: \n" + ConsoleColors.RESET);
+		System.out
+				.println(nuevaLiga);
+		return nuevaLiga;
 	}
 
 	public String getTipo() {
