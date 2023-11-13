@@ -60,8 +60,8 @@ public class Archivos {
 				String linea = scanner.nextLine();
 				String[] datos = linea.split(", ");
 				Liga liga = new Liga(datos[0]);
-				for (String miembro : datos) {
-					liga.agregarMiembro(miembro, ligasPrecargadas, personajesPrecargados);
+				for(int i = 1; i < datos.length ; i++) {
+					liga.agregarMiembro(datos[i], ligasPrecargadas, personajesPrecargados);
 				}
 				ligas.add(liga);
 			}

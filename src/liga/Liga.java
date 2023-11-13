@@ -38,8 +38,8 @@ public class Liga {
 		// Me fijo si el nuevo miembro es un personaje
 		if (miembroComoPersonaje != null) {
 			// Me fijo si el nuevo miembro es del mismo tipo que la liga y lo agrego
-			if (this.tipo.length() == 0 || miembroComoPersonaje.getTipo() == this.tipo) {
-				miembros.add(miembroComoPersonaje);
+			if (this.tipo.length() == 0 || miembroComoPersonaje.getTipo().contains(this.tipo)) {
+				this.miembros.add(miembroComoPersonaje);
 				this.acumularCaracteristicas(miembroComoPersonaje.getCaracteristicas());
 				this.setTipo(miembroComoPersonaje.getTipo());
 			}
@@ -47,8 +47,8 @@ public class Liga {
 
 		// Lo mismo pero tratandolo como liga
 		if (miembroComoLiga != null) {
-			if (this.tipo.length() == 0 || miembroComoPersonaje.getTipo() == this.tipo) {
-				miembros.add(miembroComoLiga);
+			if (this.tipo.length() == 0 || miembroComoPersonaje.getTipo().contains(this.tipo)) {
+				this.miembros.add(miembroComoLiga);
 				this.acumularCaracteristicas(miembroComoLiga.getSumatoriaCaracteristicas());
 				this.setTipo(miembroComoPersonaje.getTipo());
 			}
@@ -80,10 +80,10 @@ public class Liga {
 		String miembrosImprimibles = "\n\nMiembros: \n";
 		for (Object miembro : this.miembros) {
 			if (miembro instanceof Liga) {
-				miembrosImprimibles = miembrosImprimibles.concat(((Liga) miembro).getNombre());
+				miembrosImprimibles = miembrosImprimibles.concat(((Liga) miembro).getNombre() + "\n");
 			} else {
 				miembrosImprimibles = miembrosImprimibles
-						.concat(((Personaje) miembro).getNombreFicticio());
+						.concat(((Personaje) miembro).getNombreFicticio() + "\n");
 			}
 		}
 		return nombre + miembrosImprimibles + "\n\nCaracteristicas: \n" + this.getSumatoriaCaracteristicas()

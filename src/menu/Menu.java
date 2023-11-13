@@ -131,7 +131,7 @@ public class Menu {
 				// ");
 				// String nombreArchivo = scanner.next();
 
-				ligas = Archivos.cargarLigasDesdeArchivo("ligas.in", ligas, personajes);
+				ligas.addAll(Archivos.cargarLigasDesdeArchivo("ligas.in", ligas, personajes));
 				System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 						+ "! Logramos cargar las siguientes ligas: \n");
 				imprimirLigas();
