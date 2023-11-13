@@ -55,21 +55,15 @@ public class Menu {
 
 		while (true) {
 			if (selection == -1) {
-				System.out.println(
-						"\n\nSi sale perdera toda la informacion cargada (Con excepcion de los archivos ya generados. Desea continuar? "
-								+ ConsoleColors.RED_BRIGHT
-								+ "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
-								+ ConsoleColors.RESET);
-				selection = scanner.nextInt();
-				if (selection == 2) {
-					selection = 0;
-				} else {
-					break;
-				}
+				System.out.println("\n\n" + ConsoleColors.RED_BRIGHT
+						+ "\nADIOS! \n\n\n"
+						+ ConsoleColors.RESET);
+				break;
 			}
 			hacerAlgoAPartirDeSeleccion(selection);
 			System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 					+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
+			showMenu();
 			scanner = new Scanner(System.in);
 			selection = scanner.nextInt();
 		}

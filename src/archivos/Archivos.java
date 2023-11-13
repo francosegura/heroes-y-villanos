@@ -42,7 +42,7 @@ public class Archivos {
 		}
 
 		return personajes;
-	}
+	} 
 
 	public static void guardarPersonajesEnArchivo(String file) {
 		// TODO: Hacer
