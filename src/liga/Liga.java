@@ -47,10 +47,10 @@ public class Liga {
 
 		// Lo mismo pero tratandolo como liga
 		if (miembroComoLiga != null) {
-			if (this.tipo.length() == 0 || miembroComoPersonaje.getTipo().contains(this.tipo)) {
+			if (this.tipo.length() == 0 || miembroComoLiga.getTipo().contains(this.tipo)) {
 				this.miembros.add(miembroComoLiga);
 				this.acumularCaracteristicas(miembroComoLiga.getSumatoriaCaracteristicas());
-				this.setTipo(miembroComoPersonaje.getTipo());
+				this.setTipo(miembroComoLiga.getTipo());
 			}
 		}
 

@@ -51,7 +51,7 @@ public class Archivos {
 
 	public static ArrayList<Liga> cargarLigasDesdeArchivo(String file, ArrayList<Liga> ligasPrecargadas,
 			ArrayList<Personaje> personajesPrecargados) {
-		ArrayList<Liga> ligas = new ArrayList<Liga>();
+		ArrayList<Liga> ligas = new ArrayList<Liga>(ligasPrecargadas);
 		String nombreArchivo = new File(file).getAbsolutePath();
 		try {
 			Scanner scanner = new Scanner(new File(nombreArchivo));
@@ -61,7 +61,7 @@ public class Archivos {
 				String[] datos = linea.split(", ");
 				Liga liga = new Liga(datos[0]);
 				for(int i = 1; i < datos.length ; i++) {
-					liga.agregarMiembro(datos[i], ligasPrecargadas, personajesPrecargados);
+					liga.agregarMiembro(datos[i], ligas, personajesPrecargados);
 				}
 				ligas.add(liga);
 			}
