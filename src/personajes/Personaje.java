@@ -99,24 +99,14 @@ public class Personaje {
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Finalizamos con la destreza: " + ConsoleColors.RESET);
 		int destreza = Menu.scanner.nextInt();
 
+		Personaje nuevoPersonaje = new Personaje(tipoDePersonajeTexto, nombreReal, nombreFicticio,
+				new Caracteristicas(velocidad, fuerza, resistencia, destreza));
 		System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT
 				+ "Felicidades! Su personaje fue creado de la siguiente manera: \n" + ConsoleColors.RESET);
 		System.out
-				.println(ConsoleColors.BLUE_BRIGHT + "Tipo: " + tipoDePersonajeTexto + ConsoleColors.RESET);
-		System.out
-				.println(ConsoleColors.BLUE_BRIGHT + "Nombre Real: " + nombreReal + ConsoleColors.RESET);
-		System.out
-				.println(ConsoleColors.BLUE_BRIGHT + "Nombre Ficticio: " + nombreFicticio + ConsoleColors.RESET);
-		System.out
-				.println(ConsoleColors.BLUE_BRIGHT + "Velocidad: " + velocidad + ConsoleColors.RESET);
-		System.out
-				.println(ConsoleColors.BLUE_BRIGHT + "Fuerza: " + fuerza + ConsoleColors.RESET);
-		System.out
-				.println(ConsoleColors.BLUE_BRIGHT + "Resistencia: " + resistencia + ConsoleColors.RESET);
-		System.out
-				.println(ConsoleColors.BLUE_BRIGHT + "Destreza: " + destreza + ConsoleColors.RESET);
-		return new Personaje(tipoDePersonajeTexto, nombreReal, nombreFicticio,
-				new Caracteristicas(velocidad, fuerza, resistencia, destreza));
+				.println(nuevoPersonaje);
+		
+		return nuevoPersonaje;
 	}
 
 	public static Personaje buscarMiembroEnPersonajes(ArrayList<Personaje> personajes, String miembroABuscar) {
