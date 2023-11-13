@@ -86,7 +86,8 @@ public class Liga {
 						.concat(((Personaje) miembro).getNombreFicticio());
 			}
 		}
-		return nombre + miembrosImprimibles + "\n\nCaracteristicas: \n" + this.getSumatoriaCaracteristicas() + "\n\nTipo: " + this.tipo;
+		return nombre + miembrosImprimibles + "\n\nCaracteristicas: \n" + this.getSumatoriaCaracteristicas()
+				+ "\n\nTipo: " + this.tipo;
 	}
 
 	public static Liga crearLiga(ArrayList<Liga> ligasPrecargadas, ArrayList<Personaje> personajesPrecargados) {

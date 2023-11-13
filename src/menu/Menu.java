@@ -30,13 +30,14 @@ public class Menu {
 		System.out.println("\t 8 - Guardar todas las ligas en archivo");
 
 		System.out.println("\n" + ConsoleColors.GREEN_BOLD_BRIGHT + "Realizacion de combates" + ConsoleColors.RESET);
-		System.out.println("\t 9 - Personaje contra liga");
-		System.out.println("\t 10 - Liga contra liga");
+		System.out.println("\t 9 - Personaje contra Personaje");
+		System.out.println("\t 10 - Personaje contra liga");
+		System.out.println("\t 11 - Liga contra liga");
 
 		System.out.println("\n" + ConsoleColors.GREEN_BOLD_BRIGHT + "Reportes" + ConsoleColors.RESET);
 		System.out.println(
-				"\t 11 - Todos los personajes o ligas que venzan a un\n personaje dado para cierta característica");
-		System.out.println("\t 12 - Listado ordenado de personajes por \n múltiples características");
+				"\t 12 - Todos los personajes o ligas que venzan a un\n personaje dado para cierta caracteristica");
+		System.out.println("\t 13 - Listado ordenado de personajes por \n multiples caracteristicas");
 
 		System.out.println("\n\nSeleccione una opcion correcta, " + ConsoleColors.RED_BRIGHT + " o - 1 para salir\n\n\n"
 				+ ConsoleColors.RESET);
@@ -48,31 +49,31 @@ public class Menu {
 
 	public static void main(String[] args) {
 		System.out.println(ConsoleColors.BLUE_BOLD + "BIENVENIDO A HEROES Y VILLANOS! \n\n" + ConsoleColors.RESET);
-		try (Scanner scanner = new Scanner(System.in)) {
-			showMenu();
-			int selection = scanner.nextInt();
+		Scanner scanner = new Scanner(System.in);
+		showMenu();
+		int selection = scanner.nextInt();
 
-			while (true) {
-				// if (selection == -1) {
-				// System.out.println(
-				// "\n\nSi sale perdera toda la informacion cargada (Con excepcion de los
-				// archivos ya generados. Desea continuar? "
-				// + ConsoleColors.RED_BRIGHT
-				// + "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
-				// + ConsoleColors.RESET);
-				// selection = scanner.nextInt();
-				// if (selection == 2) {
-				// selection = 0;
-				// } else {
-				// break;
-				// }
-				// }
-				hacerAlgoAPartirDeSeleccion(selection);
-				System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
-						+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
+		while (true) {
+			if (selection == -1) {
+				System.out.println(
+						"\n\nSi sale perdera toda la informacion cargada (Con excepcion de los archivos ya generados. Desea continuar? "
+								+ ConsoleColors.RED_BRIGHT
+								+ "\n1 - Si, quiero salir\n2- No, dejame en el programa\n\n\n"
+								+ ConsoleColors.RESET);
 				selection = scanner.nextInt();
+				if (selection == 2) {
+					selection = 0;
+				} else {
+					break;
+				}
 			}
+			hacerAlgoAPartirDeSeleccion(selection);
+			System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
+					+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
+			scanner = new Scanner(System.in);
+			selection = scanner.nextInt();
 		}
+		scanner.close();
 	}
 
 	private static void imprimirPersonajes() {
