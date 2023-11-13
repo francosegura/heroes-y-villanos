@@ -3,7 +3,8 @@ package personajes;
 import utils.ConsoleColors;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import menu.Menu;
 
 public class Personaje {
 	private String nombreReal;
@@ -56,21 +57,20 @@ public class Personaje {
 
 	@Override
 	public String toString() {
-		return this.tipo + "\t\t" + this.nombreReal + "\t" + this.nombreFicticio + "\t"
-				+ this.caracteristicas.getVelocidad() + "\t\t" + this.caracteristicas.getFuerza() + "\t"
-				+ this.caracteristicas.getResistencia() + "\t\t" + this.caracteristicas.getDestreza();
+		return ConsoleColors.BLUE_BRIGHT + "\n\nTipo: " + this.tipo
+				+ "\nnombre Real: " + nombreReal + "\nNombre Ficticio: " + nombreFicticio + "\nVelocidad: "
+				+ this.caracteristicas.getVelocidad() + "\nFuerza: " + this.caracteristicas.getFuerza() + "\nResistencia: "
+				+ this.caracteristicas.getResistencia() + "\nDestreza: " + this.caracteristicas.getDestreza()
+				+ ConsoleColors.RESET;
 	}
-
 
 	public static Personaje crearPersonaje() {
 		System.out.println("\n\n\n\n" + ConsoleColors.BLUE_BOLD_BRIGHT + "Bienvenido a la creacion de personaje"
 				+ ConsoleColors.RESET);
-		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Primero seleccionemos el tipo. Por favor elija "
+		System.out.println("\n" + "Primero seleccionemos el tipo. Por favor elija "
 				+ ConsoleColors.BLUE_BRIGHT + "(1)" + ConsoleColors.RESET + " si desea crear un heroe, o "
-				+ ConsoleColors.BLUE_BRIGHT + "(2)" + ConsoleColors.RESET + " si desea crear un villano. "
-				+ ConsoleColors.RESET);
-		Scanner scanner = new Scanner(System.in);
-		int tipoDePersonaje = scanner.nextInt();
+				+ ConsoleColors.BLUE_BRIGHT + "(2)" + ConsoleColors.RESET + " si desea crear un villano. ");
+		int tipoDePersonaje = Menu.scanner.nextInt();
 		String tipoDePersonajeTexto;
 		if (tipoDePersonaje == 1) {
 			tipoDePersonajeTexto = "Heroe";
@@ -79,29 +79,28 @@ public class Personaje {
 		} else {
 			System.out.println("\n" + ConsoleColors.RED_BRIGHT
 					+ "Opcion incorrecta. Volviendo al menu.... " + ConsoleColors.RESET);
-			scanner.close();
 			return null;
 		}
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT
 				+ "Ahora vamos con el nombre real. Puede escribirlo a continuacion: " + ConsoleColors.RESET);
-		String nombreReal = scanner.next();
+		String nombreReal = Menu.scanner.next();
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT
 				+ "Genial! Continuamos con el nombre ficticio. Puede escribirlo a continuacion: "
 				+ ConsoleColors.RESET);
-		String nombreFicticio = scanner.next();
+		String nombreFicticio = Menu.scanner.next();
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT
 				+ "Buen nombre! Ahora definiremos sus habilidades(Recuerde que son numericas). \nComencemos con la velocidad: "
 				+ ConsoleColors.RESET);
-		int velocidad = scanner.nextInt();
+		int velocidad = Menu.scanner.nextInt();
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Continuamos con la fuerza: " + ConsoleColors.RESET);
-		int fuerza = scanner.nextInt();
+		int fuerza = Menu.scanner.nextInt();
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Seguimos con la resistencia: " + ConsoleColors.RESET);
-		int resistencia = scanner.nextInt();
+		int resistencia = Menu.scanner.nextInt();
 		System.out.println("\n" + ConsoleColors.BLUE_BRIGHT + "Finalizamos con la destreza: " + ConsoleColors.RESET);
-		int destreza = scanner.nextInt();
+		int destreza = Menu.scanner.nextInt();
 
 		System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT
-				+ "Felicidades! Su personaje fue creado de la siguiente manera: " + ConsoleColors.RESET);
+				+ "Felicidades! Su personaje fue creado de la siguiente manera: \n" + ConsoleColors.RESET);
 		System.out
 				.println(ConsoleColors.BLUE_BRIGHT + "Tipo: " + tipoDePersonajeTexto + ConsoleColors.RESET);
 		System.out
@@ -116,8 +115,6 @@ public class Personaje {
 				.println(ConsoleColors.BLUE_BRIGHT + "Resistencia: " + resistencia + ConsoleColors.RESET);
 		System.out
 				.println(ConsoleColors.BLUE_BRIGHT + "Destreza: " + destreza + ConsoleColors.RESET);
-
-		// scanner.close();
 		return new Personaje(tipoDePersonajeTexto, nombreReal, nombreFicticio,
 				new Caracteristicas(velocidad, fuerza, resistencia, destreza));
 	}

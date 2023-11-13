@@ -11,6 +11,7 @@ import utils.ConsoleColors;
 public class Menu {
 	private static ArrayList<Personaje> personajes = new ArrayList<Personaje>();
 	private static ArrayList<Liga> ligas = new ArrayList<Liga>();
+	public static final Scanner scanner = new Scanner(System.in);
 
 	public static void showMenu() {
 		System.out.println("Menu principal");
@@ -49,7 +50,6 @@ public class Menu {
 
 	public static void main(String[] args) {
 		System.out.println(ConsoleColors.BLUE_BOLD + "BIENVENIDO A HEROES Y VILLANOS! \n\n" + ConsoleColors.RESET);
-		Scanner scanner = new Scanner(System.in);
 		showMenu();
 		int selection = scanner.nextInt();
 
@@ -64,21 +64,17 @@ public class Menu {
 			System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 					+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 			System.out.println("Press Any Key To Continue...");
-			new java.util.Scanner(System.in).nextLine();
+			// new java.util.Scanner(System.in).nextLine();
+			selection = new Scanner(System.in).nextInt();
 			showMenu();
-			scanner = new Scanner(System.in);
-			selection = scanner.nextInt();
 		}
 		scanner.close();
 	}
 
 	private static void imprimirPersonajes() {
-		String personajesImprimibles = "";
 		for (Personaje personaje : personajes) {
-			personajesImprimibles = personajesImprimibles.concat("\n" + personaje);
+			System.out.println(personaje);
 		}
-		System.out.println("Heroe/Villano\tNombreReal\tNombrePersonaje\tVelocidad\tFuerza\tResistencia\tDestreza");
-		System.out.println(ConsoleColors.BLUE + personajesImprimibles + ConsoleColors.RESET);
 	}
 
 	private static void imprimirLigas() {
@@ -109,7 +105,6 @@ public class Menu {
 			case 2:
 				System.out.println("\n\nPor supuesto! Vayamos a crear un personaje nuevo");
 				Personaje nuevoPersonaje = Personaje.crearPersonaje();
-				System.out.println(nuevoPersonaje);
 				if (nuevoPersonaje instanceof Personaje) {
 					personajes.add(nuevoPersonaje);
 				}
@@ -120,7 +115,7 @@ public class Menu {
 							"\n\nAun no ha cargado ningun personaje. Puede hacerlo mediante las opciones 1 o 2");
 					break;
 				}
-				System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: ");
+				System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: \n\n");
 				imprimirPersonajes();
 				break;
 			case 4:
