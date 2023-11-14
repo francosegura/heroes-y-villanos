@@ -15,8 +15,8 @@ public class BatallaTest {
 
         Caracteristicas caracteristicasVillano = new Caracteristicas(15, 25, 35, 45);
         Personaje villano = new Personaje("Villano", "Joker", "Joker", caracteristicasVillano);
-
-        assertEquals(heroe, Batalla.determinarGanador1v1(heroe, villano, "Velocidad"));
+        Personaje ganador = Batalla.determinarGanador1v1(heroe, villano, "Velocidad");
+        assertEquals("Joker",ganador.getNombreFicticio());
     }
 
     @Test
@@ -37,8 +37,9 @@ public class BatallaTest {
 
         Caracteristicas caracteristicasVillano = new Caracteristicas(15, 25, 35, 45);
         Personaje villano = new Personaje("Villano", "Joker", "Joker", caracteristicasVillano);
-
-        assertNull(Batalla.determinarGanador1v1(heroe, villano, "Resistencia"));
+        
+        Personaje ganador = Batalla.determinarGanador1v1(heroe, villano, "Resistencia");
+        assertEquals("Joker",ganador.getNombreFicticio());
     }
 
     @Test
@@ -46,10 +47,11 @@ public class BatallaTest {
         Caracteristicas caracteristicasHeroe = new Caracteristicas(10, 20, 30, 40);
         Personaje heroe = new Personaje("Heroe", "Bruce Wayne", "Batman", caracteristicasHeroe);
 
-        Caracteristicas caracteristicasVillano = new Caracteristicas(15, 25, 35, 45);
+        Caracteristicas caracteristicasVillano = new Caracteristicas(15, 25, 35, 35);
         Personaje villano = new Personaje("Villano", "Joker", "Joker", caracteristicasVillano);
-
-        assertEquals(heroe, Batalla.determinarGanador1v1(heroe, villano, "Destreza"));
+        
+        Personaje ganador = Batalla.determinarGanador1v1(heroe, villano, "Destreza");
+        assertEquals("Batman",ganador.getNombreFicticio());
     }
 
     @Test
