@@ -23,6 +23,10 @@ public class Liga {
 		return nombre;
 	}
 
+	public List<Object> getMiembros() {
+		return miembros;
+	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

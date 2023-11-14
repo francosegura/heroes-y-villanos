@@ -93,8 +93,28 @@ public class Archivo {
 		return ligas;
 	}
 
-	public static void guardarLigasEnArchivo(String file) {
-		// TODO: Hacer
+	public static void guardarLigasEnArchivo(String file, ArrayList<Liga> ligas) {
+		String nombreArchivo = new File(file).getAbsolutePath();
+		 try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (Liga liga : ligas) {
+				// Midnight Sons, Dr Strange, Ghost Rider, Dr Vadoo
+                writer.write(liga.getNombre());
+				if(liga.getMiembros().size() > 0) {
+					for (Object miembro : liga.getMiembros()) {
+						if(miembro instanceof Personaje) {
+							writer.write(", " + ((Personaje)miembro).getNombreFicticio());
+						}
+						if(miembro instanceof Liga) {
+							writer.write(", " + ((Liga)miembro).getNombre());
+						}
+					}
+				}
+                writer.newLine();
+            }
+            System.out.println("Ligas guardadas correctamente en el archivo " + file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	} 
 
-	}
 }

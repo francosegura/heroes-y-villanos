@@ -156,7 +156,7 @@ public class Menu {
 				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
 				// ");
 				// String nombreArchivo = scanner.next();
-				// Archivos.guardarPersonajesEnArchivo("Ponele");
+				Archivo.guardarLigasEnArchivo("ligasAArchivo.in", ligas);
 				break;
 			case 9: {
 				System.out.println(ConsoleColors.GREEN_BRIGHT
