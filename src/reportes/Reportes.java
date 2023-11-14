@@ -43,7 +43,7 @@ public class Reportes {
 		
 		for (Personaje personaje:personajesOrdenados)
 		{
-			System.out.println(personaje);
+			System.out.println("\n\n" + personaje);
 		}
 	}
     
