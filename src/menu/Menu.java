@@ -76,13 +76,13 @@ public class Menu {
 
 	private static void imprimirPersonajes() {
 		for (Personaje personaje : personajes) {
-			System.out.println(personaje);
+			System.out.println("\n\n" + personaje);
 		}
 	}
 
 	private static void imprimirLigas() {
 		for (Liga liga : ligas) {
-			System.out.println(liga);
+			System.out.println("\n\n\n" + liga);
 		}
 	}
 
@@ -196,6 +196,44 @@ public class Menu {
 				}
 				break;
 			}
+			case 11: {
+				System.out.println(ConsoleColors.GREEN_BRIGHT
+						+ "\n\nBienvenido a la batalla Liga vs Liga!" + ConsoleColors.RESET);
+				System.out.println("\nIngrese la primera liga a combatir: ");
+
+				String nombrePrimeraLiga = scanner.next();
+				Liga primeraLiga = Liga.buscarMiembroEnLigas(ligas, nombrePrimeraLiga);
+
+				if (primeraLiga == null) {
+					System.out.println("\n\nLa liga ingresada no existe. Intente nuevamente");
+					break;
+				}
+
+				System.out.println("\nIngrese la segunda liga a combatir: ");
+				String nombreSegundaLiga = scanner.next();
+				Liga segundaLiga = Liga.buscarMiembroEnLigas(ligas, nombreSegundaLiga);
+
+				if (segundaLiga == null) {
+					System.out.println("\n\nLa liga ingresada no existe. Intente nuevamente");
+					break;
+				}
+
+				System.out.println(
+						"\nIngrese la caracteristica por la que combatiran. Recuerde que las mismas son: Velocidad, Fuerza, Resistencia, Destreza:\n ");
+				String caracteristica = Caracteristicas.caracteristicaValida(scanner.next());
+				if (caracteristica.length() > 0) {
+					Liga ganador = Batalla.determinarGanadorNvN(primeraLiga, segundaLiga, caracteristica);
+					if (ganador == null) {
+						System.out.println("\n\nEMPATE! \n\n");
+					} else {
+						System.out.println("\n\nContendiente ganador: \n\n" + ganador);
+					}
+				} else {
+					System.out.println("\n\nLa caracteristica ingresada no existe. Intente nuevamente");
+					break;
+				}
+				break;
+			}
 			case 10: {
 				System.out.println(ConsoleColors.GREEN_BRIGHT
 						+ "\n\nBienvenido a la batalla Personaje vs Liga! (Boca y xmen dan empate)" + ConsoleColors.RESET);
@@ -234,10 +272,10 @@ public class Menu {
 				}
 				break;
 			}
-			case 11:
+			case 12:
 				Reportes.personajesVencedoresPorCaracteristica(personajes, "Hela", "Velocidad");
 				break;
-			case 12:
+			case 13:
 				Reportes.ordenarPorCaracteristicas(personajes, "DESTREZA");
 				break;
 

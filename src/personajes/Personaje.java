@@ -58,9 +58,11 @@ public class Personaje {
 
 	@Override
 	public String toString() {
-		return ConsoleColors.BLUE_BRIGHT + "\n\nTipo: " + this.tipo
-				+ "\nnombre Real: " + nombreReal + "\nNombre Ficticio: " + nombreFicticio + "\nVelocidad: "
-				+ this.caracteristicas.getVelocidad() + "\nFuerza: " + this.caracteristicas.getFuerza() + "\nResistencia: "
+		return ConsoleColors.BLUE_BRIGHT
+				+ "Nombre Real: " + nombreReal + "\nNombre Ficticio: " + nombreFicticio + "\nTipo: " + this.tipo
+				+ "\nVelocidad: "
+				+ this.caracteristicas.getVelocidad() + "\nFuerza: " + this.caracteristicas.getFuerza()
+				+ "\nResistencia: "
 				+ this.caracteristicas.getResistencia() + "\nDestreza: " + this.caracteristicas.getDestreza()
 				+ ConsoleColors.RESET;
 	}
@@ -106,7 +108,7 @@ public class Personaje {
 				+ "Felicidades! Su personaje fue creado de la siguiente manera: \n" + ConsoleColors.RESET);
 		System.out
 				.println(nuevoPersonaje);
-		
+
 		return nuevoPersonaje;
 	}
 
@@ -118,16 +120,13 @@ public class Personaje {
 		}
 		return null;
 	}
-	
-	
-	public ArrayList<Personaje> personajesQueLoVencen(ArrayList<Personaje> personajesEnMemoria, String caracteristica)
-	{
-		ArrayList<Personaje> personajesVencedores= new ArrayList<Personaje>();
-		
-		for (Personaje personaje: personajesEnMemoria)
-		{
+
+	public ArrayList<Personaje> personajesQueLoVencen(ArrayList<Personaje> personajesEnMemoria, String caracteristica) {
+		ArrayList<Personaje> personajesVencedores = new ArrayList<Personaje>();
+
+		for (Personaje personaje : personajesEnMemoria) {
 			Personaje vencedor = Batalla.determinarGanador1v1(personaje, this, caracteristica);
-				
+
 			if (vencedor != null && !vencedor.nombreFicticio.equals(this.nombreFicticio)) {
 				personajesVencedores.add(vencedor);
 			}

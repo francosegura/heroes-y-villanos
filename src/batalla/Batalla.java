@@ -94,8 +94,8 @@ public class Batalla {
 
 		// Comparar las caracteristicas de los personajes en el orden establecido
 		for (int k = 0; k < orden.length; k++) {
-			double caracteristica1 = liga1.getSumatoriaCaracteristicas().getCaracteristica(orden[i]);
-			double caracteristica2 = liga2.getSumatoriaCaracteristicas().getCaracteristica(orden[i]);
+			double caracteristica1 = liga1.calcularPromedioCaracteristica().getCaracteristica(orden[i]);
+			double caracteristica2 = liga2.calcularPromedioCaracteristica().getCaracteristica(orden[i]);
 
 			if (caracteristica1 > caracteristica2) {
 				return liga1;
