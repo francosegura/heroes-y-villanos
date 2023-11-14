@@ -88,8 +88,12 @@ public class Liga {
 						.concat(((Personaje) miembro).getNombreFicticio() + "\n");
 			}
 		}
-		return nombre + miembrosImprimibles + "\n\nCaracteristicas: \n" + this.getSumatoriaCaracteristicas()
-				+ "\n\nTipo: " + this.tipo;
+		if (this.miembros.size() > 0) {
+			return ConsoleColors.BLUE + nombre + miembrosImprimibles + "\n\nCaracteristicas: \n"
+					+ this.getSumatoriaCaracteristicas()
+					+ "\n\nTipo: " + this.tipo + ConsoleColors.RESET;
+		}
+		return ConsoleColors.BLUE + nombre + ": Esta liga no tiene miembros aun" + ConsoleColors.RESET;
 	}
 
 	public static Liga crearLiga(ArrayList<Liga> ligasPrecargadas, ArrayList<Personaje> personajesPrecargados) {

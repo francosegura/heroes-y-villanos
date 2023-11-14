@@ -78,12 +78,9 @@ public class Menu {
 	}
 
 	private static void imprimirLigas() {
-		String ligasImprimibles = "";
 		for (Liga liga : ligas) {
-			ligasImprimibles = ligasImprimibles.concat("\n\n\n" + liga);
+			System.out.println(liga);
 		}
-		System.out.println("Nombre\t\t\t	Miembros");
-		System.out.println(ConsoleColors.BLUE + ligasImprimibles + ConsoleColors.RESET);
 	}
 
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
