@@ -85,7 +85,31 @@ public class Menu {
 			System.out.println("\n\n\n" + liga);
 		}
 	}
+    private static String ingresarPersonaje(Scanner scanner) {
+        System.out.println("Ingrese el nombre del personaje:");
+        scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
+        return scanner.nextLine();
+    }
 
+    private static String ingresarCaracteristica(Scanner scanner) {
+        System.out.println("Ingrese la característica:");
+        return scanner.next();
+    }
+	 private static String[] ingresarCaracteristicas(Scanner scanner) {
+	        System.out.println("Ingrese entre 1 y 4 características (separadas por espacios):");
+	        scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
+	        String entrada = scanner.nextLine();
+	        String[] caracteristicas = entrada.split("\\s+");
+
+	        // Validar la cantidad de características
+	        while (caracteristicas.length < 1 || caracteristicas.length > 4) {
+	            System.out.println("Cantidad de características no válida. Ingrese entre 1 y 4 características:");
+	            entrada = scanner.nextLine();
+	            caracteristicas = entrada.split("\\s+");
+	        }
+
+	        return caracteristicas;
+	    }
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
 		switch (selection) {
 			case 1:
@@ -273,10 +297,17 @@ public class Menu {
 				break;
 			}
 			case 12:
-				Reportes.personajesVencedoresPorCaracteristica(personajes, "Hela", "Velocidad");
+                String heroe = ingresarPersonaje(scanner);
+                String caracteristica = ingresarCaracteristica(scanner);
+				Reportes.personajesVencedoresPorCaracteristica(personajes,ligas,heroe,caracteristica);
 				break;
 			case 13:
-				Reportes.ordenarPorCaracteristicas(personajes, "DESTREZA");
+				String[] caracteristicas = ingresarCaracteristicas(scanner);
+				System.out.println("Características ingresadas: ");
+				for (String caracteristicaIngreada : caracteristicas) {
+					System.out.println(caracteristicaIngreada);
+				}
+				Reportes.ordenarPorCaracteristicas(personajes, caracteristicas);
 				break;
 
 			default:
