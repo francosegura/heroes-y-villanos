@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import archivos.Archivos;
+import batalla.Batalla;
 import liga.Liga;
+import personajes.Caracteristicas;
 import personajes.Personaje;
+import reportes.Reportes;
 import utils.ConsoleColors;
 
 public class Menu {
@@ -156,11 +159,36 @@ public class Menu {
 				Archivos.guardarPersonajesEnArchivo("Ponele");
 				break;
 			case 9:
-				// Scanner scanner = new Scanner(System.in);
-				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
-				// ");
-				// String nombreArchivo = scanner.next();
-				Archivos.guardarPersonajesEnArchivo("Ponele");
+				System.out.println(ConsoleColors.GREEN_BRIGHT
+						+ "\n\nBienvenido a la batalla 1vs1, Personaje vs Personaje!" + ConsoleColors.RESET);
+				System.out.println("\nIngrese el primer personaje a combatir: ");
+				
+				String primerNombreDePersonaje = scanner.next();
+				Personaje primerPersonaje = Personaje.buscarMiembroEnPersonajes(personajes, primerNombreDePersonaje);
+				
+				if (primerPersonaje == null) {
+					System.out.println("\n\nEl personaje ingresado no existe. Intente nuevamente");
+					break;
+				}
+				
+				System.out.println("\nIngrese el segundo personaje a combatir: ");
+				String segundoNombreDePersonaje = scanner.next();
+				Personaje segundoPersonaje = Personaje.buscarMiembroEnPersonajes(personajes, segundoNombreDePersonaje);
+				
+				if (segundoPersonaje == null) {
+					System.out.println("\n\nEl personaje ingresado no existe. Intente nuevamente");
+					break;
+				}
+				
+				System.out.println("\nIngrese la caracteristica por la que combatiran. Recuerde que las mismas son: Velocidad, Fuerza, Resistencia, Destreza:\n ");
+				String caracteristica = Caracteristicas.caracteristicaValida(scanner.next());
+				if (caracteristica.length() > 0) {
+					System.out.println("\n\nPersonaje ganador: \n"
+							+ Batalla.determinarGanador1v1(primerPersonaje, segundoPersonaje, caracteristica));
+				} else {
+					System.out.println("\n\nLa caracteristica ingresada no existe. Intente nuevamente");
+					break;
+				}
 				break;
 			case 11:
 				Reportes.personajesVencedoresPorCaracteristica(personajes, "Hela", "Velocidad");

@@ -56,7 +56,7 @@ public class Caracteristicas {
             case "Destreza":
                 return destreza;
             default:
-                throw new IllegalArgumentException("Caracter�stica no v�lida");
+                throw new IllegalArgumentException("Caracteristica no valida");
         }
     }
 
@@ -64,5 +64,21 @@ public class Caracteristicas {
     public String toString() {
         return "Velocidad: " + velocidad + "\nDestreza: " + destreza + "\nFuerza: " + fuerza + "\nResistencia: "
                 + resistencia;
+    }
+
+    public static String caracteristicaValida(String posibleCaracteristica) {
+        if (posibleCaracteristica.trim().equalsIgnoreCase("Velocidad")) {
+            return "Velocidad";
+        }
+        if (posibleCaracteristica.trim().equalsIgnoreCase("Destreza")) {
+            return "Destreza";
+        }
+        if (posibleCaracteristica.trim().equalsIgnoreCase("Fuerza")) {
+            return "Fuerza";
+        }
+        if (posibleCaracteristica.trim().equalsIgnoreCase("Resistencia")) {
+            return "Resistencia";
+        }
+        return "";
     }
 }
