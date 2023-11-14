@@ -162,6 +162,12 @@ public class Menu {
 				// String nombreArchivo = scanner.next();
 				Archivos.guardarPersonajesEnArchivo("Ponele");
 				break;
+			case 11:
+				Reportes.personajesVencedoresPorCaracteristica(personajes, "Hela", "Velocidad");
+				break;
+			case 12:
+				Reportes.ordenarPorCaracteristicas(personajes, "DESTREZA");
+				break;
 
 			default:
 				System.out.println(ConsoleColors.PURPLE_BRIGHT + "\nNo implementado aun x.x\n\n" + ConsoleColors.RESET);
