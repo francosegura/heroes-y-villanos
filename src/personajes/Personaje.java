@@ -117,4 +117,21 @@ public class Personaje {
 		}
 		return null;
 	}
+	
+	
+	public ArrayList<Personaje> personajesQueLoVencen (ArrayList<Personaje> personajesEnMemoria, String caracteristica)
+	{
+		ArrayList<Personaje> personajesVencedores= new ArrayList<Personaje>();
+		
+		for (Personaje personaje: personajesEnMemoria)
+		{
+			Personaje vencedor = Batalla.determinarGanador1v1(personaje, this, caracteristica);
+				
+			if (vencedor != null && !vencedor.nombreFicticio.equals(this.nombreFicticio)) {
+				personajesVencedores.add(vencedor);
+			}
+		}
+		return personajesVencedores;
+	}
+}
 }
