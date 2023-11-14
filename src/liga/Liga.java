@@ -95,8 +95,8 @@ public class Liga {
 			}
 		}
 		if (this.miembros.size() > 0) {
-			return ConsoleColors.BLUE + nombre + miembrosImprimibles + "\n\nCaracteristicas: \n"
-					+ this.getSumatoriaCaracteristicas()
+			return ConsoleColors.BLUE + nombre + miembrosImprimibles + "\nCaracteristicas: \n"
+					+ this.calcularPromedioCaracteristica()
 					+ "\n\nTipo: " + this.tipo + ConsoleColors.RESET;
 		}
 		return ConsoleColors.BLUE + nombre + ": Esta liga no tiene miembros aun" + ConsoleColors.RESET;

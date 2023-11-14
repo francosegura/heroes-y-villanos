@@ -62,8 +62,8 @@ public class Caracteristicas {
 
     @Override
     public String toString() {
-        return "Velocidad: " + velocidad + "\nDestreza: " + destreza + "\nFuerza: " + fuerza + "\nResistencia: "
-                + resistencia;
+        return "Velocidad: " + Math.floor(velocidad) + "\nDestreza: " + Math.floor(destreza) + "\nFuerza: " + Math.floor(fuerza) + "\nResistencia: "
+                + Math.floor(resistencia);
     }
 
     public static String caracteristicaValida(String posibleCaracteristica) {

@@ -4,6 +4,7 @@ import utils.ConsoleColors;
 
 import java.util.ArrayList;
 
+import batalla.Batalla;
 import menu.Menu;
 
 public class Personaje {
@@ -119,7 +120,7 @@ public class Personaje {
 	}
 	
 	
-	public ArrayList<Personaje> personajesQueLoVencen (ArrayList<Personaje> personajesEnMemoria, String caracteristica)
+	public ArrayList<Personaje> personajesQueLoVencen(ArrayList<Personaje> personajesEnMemoria, String caracteristica)
 	{
 		ArrayList<Personaje> personajesVencedores= new ArrayList<Personaje>();
 		
@@ -133,5 +134,4 @@ public class Personaje {
 		}
 		return personajesVencedores;
 	}
-}
 }

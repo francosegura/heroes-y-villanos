@@ -31,13 +31,13 @@ Heroe, Tony Stark, Iron Man, 130, 140, 120, 110
 Villano, Bane, Bane, 100, 150, 120, 80
 Heroe, Wanda Maximoff, Scarlet Witch, 110, 90, 100, 120
 Villano, Poison Ivy, Poison Ivy, 90, 80, 100, 110
-Heroe, Wolverine, Wolverine, 100, 120, 110, 80
+Heroe, Wolverine, Wolverine, 100, 520, 110, 80
 Villano, Ultron, Ultron, 120, 130, 110, 140
 Heroe, Carol Danvers, Captain Marvel, 140, 150, 130, 120
 Villano, Sinestro, Sinestro, 110, 120, 100, 130
 Heroe, Matt Murdock, Daredevil, 100, 90, 80, 120
 Villano, Kingpin, Kingpin, 80, 130, 120, 90
-Heroe, Remy LeBeau, Gambit, 90, 100, 80, 110
+Heroe, Remy LeBeau, Gambit, 90, 600, 80, 110
 Villano, Enchantress, Enchantress, 110, 120, 90, 100
 Heroe, Kate Bishop, Hawkeye, 100, 90, 80, 120
 Villano, The Penguin, Penguin, 80, 100, 120, 90
@@ -50,4 +50,5 @@ Heroe, Lionel Messi, Barcelona, 80, 70, 80, 110
 Heroe, Cristiano Ronaldo, Real Madrid, 90, 100, 120, 80
 Heroe, Kun Aguero, Manchester City, 110, 130, 100, 90
 Heroe, Bochini, Rojo, 320, 300, 250, 100
-Heroe, Riquelme, Boca, 120, 300, 250, 100
+Heroe, Riquelme, Boca, 103, 416, 100, 96
+Heroe, Fran, Fran, 103, 416, 100, 96
