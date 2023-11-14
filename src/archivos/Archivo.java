@@ -1,7 +1,10 @@
 package archivos;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +12,7 @@ import liga.Liga;
 import personajes.Caracteristicas;
 import personajes.Personaje;
 
-public class Archivos {
+public class Archivo {
 	public static ArrayList<Personaje> cargarPersonajesDesdeArchivo(String file) {
 		ArrayList<Personaje> personajes = new ArrayList<Personaje>();
 		String nombreArchivo = new File(file).getAbsolutePath();
@@ -44,10 +47,27 @@ public class Archivos {
 		return personajes;
 	} 
 
-	public static void guardarPersonajesEnArchivo(String file) {
-		// TODO: Hacer
-
-	}
+	public static void guardarPersonajesEnArchivo(String file, ArrayList<Personaje> personajes) {
+		String nombreArchivo = new File(file).getAbsolutePath();
+		 try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+			writer.write("Heroe/Villano, NombreReal, NombrePersonaje, Velocidad, Fuerza, Resistencia, Destreza");
+			writer.newLine();
+            for (Personaje personaje : personajes) {
+				// Heroe, Edward Blake, The Comedian, 100, 200, 150, 50
+                writer.write(personaje.getTipo() + ", ");
+                writer.write(personaje.getNombreReal() + ", ");
+                writer.write(personaje.getNombreFicticio() + ", ");
+                writer.write(Double.toString(personaje.getCaracteristicas().getVelocidad()) + ", ");
+                writer.write(Double.toString(personaje.getCaracteristicas().getFuerza()) + ", ");
+                writer.write(Double.toString(personaje.getCaracteristicas().getResistencia()) + ", ");
+                writer.write(Double.toString(personaje.getCaracteristicas().getDestreza()));
+                writer.newLine();
+            }
+            System.out.println("Personajes guardados correctamente en el archivo " + file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	} 
 
 	public static ArrayList<Liga> cargarLigasDesdeArchivo(String file, ArrayList<Liga> ligasPrecargadas,
 			ArrayList<Personaje> personajesPrecargados) {

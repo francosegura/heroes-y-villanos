@@ -3,7 +3,7 @@ package menu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import archivos.Archivos;
+import archivos.Archivo;
 import batalla.Batalla;
 import liga.Liga;
 import personajes.Caracteristicas;
@@ -93,7 +93,7 @@ public class Menu {
 				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
 				// ");
 				// String nombreArchivo = scanner.next();
-				ArrayList<Personaje> personajesDesdeArchivo = Archivos.cargarPersonajesDesdeArchivo("personajes.in");
+				ArrayList<Personaje> personajesDesdeArchivo = Archivo.cargarPersonajesDesdeArchivo("personajes.in");
 				for (Personaje personajeDesdeArchivo : personajesDesdeArchivo) {
 					personajes.add(personajeDesdeArchivo);
 				}
@@ -123,7 +123,7 @@ public class Menu {
 				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
 				// ");
 				// String nombreArchivo = scanner.next();
-				Archivos.guardarPersonajesEnArchivo("Ponele");
+				Archivo.guardarPersonajesEnArchivo("personajesAArchivo.in", personajes);
 				break;
 			case 5:
 				// Scanner scanner = new Scanner(System.in);
@@ -131,7 +131,7 @@ public class Menu {
 				// ");
 				// String nombreArchivo = scanner.next();
 
-				ligas.addAll(Archivos.cargarLigasDesdeArchivo("ligas.in", ligas, personajes));
+				ligas.addAll(Archivo.cargarLigasDesdeArchivo("ligas.in", ligas, personajes));
 				System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 						+ "! Logramos cargar las siguientes ligas: \n");
 				imprimirLigas();
@@ -156,7 +156,7 @@ public class Menu {
 				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
 				// ");
 				// String nombreArchivo = scanner.next();
-				Archivos.guardarPersonajesEnArchivo("Ponele");
+				// Archivos.guardarPersonajesEnArchivo("Ponele");
 				break;
 			case 9: {
 				System.out.println(ConsoleColors.GREEN_BRIGHT
