@@ -27,14 +27,14 @@ public class Liga {
 		this.nombre = nombre;
 	}
 
-	public void agregarMiembro(String nuevoMiembro, ArrayList<Liga> ligasPrecargadas,
+	public Object agregarMiembro(String nuevoMiembro, ArrayList<Liga> ligasPrecargadas,
 			ArrayList<Personaje> personajesPrecargados) {
 		Liga miembroComoLiga = buscarMiembroEnLigas(ligasPrecargadas, nuevoMiembro);
 		Personaje miembroComoPersonaje = Personaje.buscarMiembroEnPersonajes(personajesPrecargados, nuevoMiembro);
 
 		// Me fijo si el miembro que quiero agregar existe
 		if (miembroComoLiga == null && miembroComoPersonaje == null) {
-			return;
+			return null;
 		}
 
 		// Me fijo si el nuevo miembro es un personaje
@@ -44,6 +44,7 @@ public class Liga {
 				this.miembros.add(miembroComoPersonaje);
 				this.acumularCaracteristicas(miembroComoPersonaje.getCaracteristicas());
 				this.setTipo(miembroComoPersonaje.getTipo());
+				return miembroComoPersonaje;
 			}
 		}
 
@@ -53,9 +54,14 @@ public class Liga {
 				this.miembros.add(miembroComoLiga);
 				this.acumularCaracteristicas(miembroComoLiga.getSumatoriaCaracteristicas());
 				this.setTipo(miembroComoLiga.getTipo());
+				return miembroComoLiga;
 			}
 		}
-
+		if (miembroComoLiga != null) {
+			return miembroComoLiga;
+		} else {
+			return miembroComoPersonaje;
+		}
 	}
 	//
 	// public boolean agregarCompetidor(Personaje competidor) {
@@ -100,7 +106,7 @@ public class Liga {
 		System.out.println("\n\n\n\n" + ConsoleColors.BLUE_BOLD_BRIGHT + "Bienvenido a la creacion de ligas"
 				+ ConsoleColors.RESET);
 		System.out.println("\n"
-				+ "Primero escribiremos el nombre real. Puede escribirlo a continuacion: ");
+				+ "Primero escribiremos el nombre de la liga. Puede escribirlo a continuacion: ");
 		String nombre = Menu.scanner.next();
 		Liga nuevaLiga = new Liga(nombre);
 
@@ -110,9 +116,19 @@ public class Liga {
 					+ ConsoleColors.BLUE_BRIGHT + "(2)" + ConsoleColors.RESET + " si desea finalizar. ");
 			int tipoDePersonaje = Menu.scanner.nextInt();
 			if (tipoDePersonaje == 1) {
-				// Agregar
+				System.out.println("\n"
+						+ "Escriba el nombre del miembro nuevo. Recuerde que ya tiene que existir en la base: ");
+				String nombrePersonaje = Menu.scanner.next();
+				Object miembroAAgregar = nuevaLiga.agregarMiembro(nombrePersonaje, ligasPrecargadas,
+						personajesPrecargados);
+				if (miembroAAgregar != null) {
+					System.out.println("\n"
+							+ "Miembro agregado con exito!");
+				} else {
+					System.out.println("\n"
+							+ "No pudimos agregarlo ya que el miembro no existe, o no pertenece al mismo tipo de la liga (Villanos o heroes).. :( ");
+				}
 			} else if (tipoDePersonaje == 2) {
-				// Rebotar
 				break;
 			} else {
 				System.out.println("\n" + ConsoleColors.RED_BRIGHT
@@ -150,7 +166,7 @@ public class Liga {
 
 	public static Liga buscarMiembroEnLigas(ArrayList<Liga> ligas, String miembroABuscar) {
 		for (Liga liga : ligas) {
-			if (liga.nombre.trim().toLowerCase().contains(miembroABuscar.trim().toLowerCase())) {
+			if (miembroABuscar.trim().toLowerCase().contains(liga.nombre.trim().toLowerCase())) {
 				return liga;
 			}
 		}

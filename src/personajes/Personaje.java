@@ -111,7 +111,7 @@ public class Personaje {
 
 	public static Personaje buscarMiembroEnPersonajes(ArrayList<Personaje> personajes, String miembroABuscar) {
 		for (Personaje personaje : personajes) {
-			if (personaje.nombreFicticio.toLowerCase().trim().contains(miembroABuscar.toLowerCase().trim())) {
+			if (miembroABuscar.toLowerCase().trim().contains(personaje.nombreFicticio.toLowerCase().trim())) {
 				return personaje;
 			}
 		}

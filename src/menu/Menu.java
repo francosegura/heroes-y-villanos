@@ -64,7 +64,7 @@ public class Menu {
 			System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 					+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 			System.out.println("Press Any Key To Continue...");
-			// new java.util.Scanner(System.in).nextLine();
+			// new java.util.Scanner(System.in).next();
 			selection = new Scanner(System.in).nextInt();
 			showMenu();
 		}
