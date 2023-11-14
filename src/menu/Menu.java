@@ -299,7 +299,7 @@ public class Menu {
 			case 12:
                 String heroe = ingresarPersonaje(scanner);
                 String caracteristica = ingresarCaracteristica(scanner);
-				Reportes.personajesVencedoresPorCaracteristica(personajes,ligas,heroe,caracteristica);
+				Reportes.personajesVencedoresPorCaracteristica(personajes,heroe,caracteristica);
 				break;
 			case 13:
 				String[] caracteristicas = ingresarCaracteristicas(scanner);
