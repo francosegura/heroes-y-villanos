@@ -67,11 +67,6 @@ public class Liga {
 			return miembroComoPersonaje;
 		}
 	}
-	//
-	// public boolean agregarCompetidor(Personaje competidor) {
-	// miembros.add(competidor);
-	// return false;
-	// }
 
 	public Caracteristicas calcularPromedioCaracteristica() {
 		int cantidadPersonajes = this.miembros.size();

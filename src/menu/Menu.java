@@ -67,7 +67,6 @@ public class Menu {
 			System.out.println("\n\nSeleccione una opcion correcta del menu, " + ConsoleColors.RED_BRIGHT
 					+ " o - 1 para salir\n\n\n" + ConsoleColors.RESET);
 			System.out.println("Press Any Key To Continue...");
-			// new java.util.Scanner(System.in).next();
 			selection = new Scanner(System.in).nextInt();
 			showMenu();
 		}
@@ -88,7 +87,7 @@ public class Menu {
 
 	private static String ingresarPersonaje(Scanner scanner) {
 		System.out.println("Ingrese el nombre del personaje:");
-		scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
+		scanner.nextLine();
 		return scanner.nextLine();
 	}
 
@@ -99,7 +98,7 @@ public class Menu {
 
 	private static String[] ingresarCaracteristicas(Scanner scanner) {
 		System.out.println("Ingrese entre 1 y 4 características (separadas por espacios):");
-		scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
+		scanner.nextLine();
 		String entrada = scanner.nextLine();
 		String[] caracteristicas = entrada.split("\\s+");
 

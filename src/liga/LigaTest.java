@@ -37,8 +37,6 @@ public class LigaTest {
         // Intentar agregar un miembro de tipo diferente
         Personaje villano = new Personaje(Tipos.VILLANO, "Joker", "Joker", caracteristicasHeroe);
         personajesPrecargados.add(villano);
-
-        //assertFail(liga.agregarMiembro("Joker", ligasPrecargadas, personajesPrecargados));
     }
 
     @Test

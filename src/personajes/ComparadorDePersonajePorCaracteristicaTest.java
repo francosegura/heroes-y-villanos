@@ -86,7 +86,6 @@ public class ComparadorDePersonajePorCaracteristicaTest {
 
         assertEquals(p2.getNombreFicticio(), listaPersonajes.get(0).getNombreFicticio());
         assertEquals(p3.getNombreReal(), listaPersonajes.get(1).getNombreReal());
-        //assertEquals(p2.getTipo(), listaPersonajes.get(1).getTipo());
     }
 }
 

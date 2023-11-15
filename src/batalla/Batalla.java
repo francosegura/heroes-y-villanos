@@ -4,10 +4,6 @@ import liga.Liga;
 import personajes.Personaje;
 
 public class Batalla {
-
-	// NO PUEDEN SER DEL MISMO TIPO, TIENEN Q SER SI O SI HEROES VS VILLANOS
-	// YA SEA LIGAS O PERSONAJES
-	// personaje vs personaje
 	public static Personaje determinarGanador1v1(Personaje personaje1, Personaje personaje2, String caracteristica) {
 		String[] orden = { "Velocidad", "Fuerza", "Resistencia", "Destreza" };
 
