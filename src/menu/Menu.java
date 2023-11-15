@@ -175,13 +175,12 @@ public class Menu {
 				System.out.println("\n\nPor supuesto! Aqui tienes el listado de ligas cargadas: ");
 				imprimirLigas();
 				break;
-			case 8:
-				// Scanner scanner = new Scanner(System.in);
-				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
-				// ");
-				// String nombreArchivo = scanner.next();
-				Archivo.guardarLigasEnArchivo("ligasAArchivo.in", ligas);
+			case 8: {
+				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
+				String nombreArchivo = scanner.next();
+				Archivo.guardarLigasEnArchivo(nombreArchivo, ligas);
 				break;
+			}
 			case 9: {
 				System.out.println(ConsoleColors.GREEN_BRIGHT
 						+ "\n\nBienvenido a la batalla Personaje vs Personaje! (Fran y Boca dan empate)"
