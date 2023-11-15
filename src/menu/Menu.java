@@ -113,11 +113,9 @@ public class Menu {
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
 		switch (selection) {
 			case 1:
-				// Scanner scanner = new Scanner(System.in);
-				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
-				// ");
-				// String nombreArchivo = scanner.next();
-				ArrayList<Personaje> personajesDesdeArchivo = Archivo.cargarPersonajesDesdeArchivo("personajes.in");
+				System.out.println("\n\nPor supuesto! Por favor indique el nombre del archivo: ");
+				String nombreArchivo = scanner.next();
+				ArrayList<Personaje> personajesDesdeArchivo = Archivo.cargarPersonajesDesdeArchivo(nombreArchivo);
 				for (Personaje personajeDesdeArchivo : personajesDesdeArchivo) {
 					personajes.add(personajeDesdeArchivo);
 				}
