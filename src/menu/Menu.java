@@ -85,34 +85,37 @@ public class Menu {
 			System.out.println("\n\n\n" + liga);
 		}
 	}
-    private static String ingresarPersonaje(Scanner scanner) {
-        System.out.println("Ingrese el nombre del personaje:");
-        scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
-        return scanner.nextLine();
-    }
 
-    private static String ingresarCaracteristica(Scanner scanner) {
-        System.out.println("Ingrese la característica:");
-        return scanner.next();
-    }
-	 private static String[] ingresarCaracteristicas(Scanner scanner) {
-	        System.out.println("Ingrese entre 1 y 4 características (separadas por espacios):");
-	        scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
-	        String entrada = scanner.nextLine();
-	        String[] caracteristicas = entrada.split("\\s+");
+	private static String ingresarPersonaje(Scanner scanner) {
+		System.out.println("Ingrese el nombre del personaje:");
+		scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
+		return scanner.nextLine();
+	}
 
-	        // Validar la cantidad de características
-	        while (caracteristicas.length < 1 || caracteristicas.length > 4) {
-	            System.out.println("Cantidad de características no válida. Ingrese entre 1 y 4 características:");
-	            entrada = scanner.nextLine();
-	            caracteristicas = entrada.split("\\s+");
-	        }
+	private static String ingresarCaracteristica(Scanner scanner) {
+		System.out.println("Ingrese la característica:");
+		return scanner.next();
+	}
 
-	        return caracteristicas;
-	    }
+	private static String[] ingresarCaracteristicas(Scanner scanner) {
+		System.out.println("Ingrese entre 1 y 4 características (separadas por espacios):");
+		scanner.nextLine(); // Consumir la nueva línea pendiente después de nextInt
+		String entrada = scanner.nextLine();
+		String[] caracteristicas = entrada.split("\\s+");
+
+		// Validar la cantidad de características
+		while (caracteristicas.length < 1 || caracteristicas.length > 4) {
+			System.out.println("Cantidad de características no válida. Ingrese entre 1 y 4 características:");
+			entrada = scanner.nextLine();
+			caracteristicas = entrada.split("\\s+");
+		}
+
+		return caracteristicas;
+	}
+
 	private static void hacerAlgoAPartirDeSeleccion(int selection) {
 		switch (selection) {
-			case 1:
+			case 1: {
 				System.out.println("\n\nPor supuesto! Por favor indique el nombre del archivo: ");
 				String nombreArchivo = scanner.next();
 				ArrayList<Personaje> personajesDesdeArchivo = Archivo.cargarPersonajesDesdeArchivo(nombreArchivo);
@@ -124,6 +127,7 @@ public class Menu {
 						+ "! Logramos cargar los siguientes personajes: \n");
 				imprimirPersonajes();
 				break;
+			}
 			case 2:
 				System.out.println("\n\nPor supuesto! Vayamos a crear un personaje nuevo");
 				Personaje nuevoPersonaje = Personaje.crearPersonaje();
@@ -140,13 +144,12 @@ public class Menu {
 				System.out.println("\n\nPor supuesto! Aqui tienes el listado de personajes cargados: \n\n");
 				imprimirPersonajes();
 				break;
-			case 4:
-				// Scanner scanner = new Scanner(System.in);
-				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
-				// ");
-				// String nombreArchivo = scanner.next();
-				Archivo.guardarPersonajesEnArchivo("personajesAArchivo.in", personajes);
+			case 4: {
+				System.out.println("\n\nPor supuesto! Por favor indique el nombre del archivo: ");
+				String nombreArchivo = scanner.next();
+				Archivo.guardarPersonajesEnArchivo(nombreArchivo, personajes);
 				break;
+			}
 			case 5:
 				// Scanner scanner = new Scanner(System.in);
 				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
@@ -182,7 +185,8 @@ public class Menu {
 				break;
 			case 9: {
 				System.out.println(ConsoleColors.GREEN_BRIGHT
-						+ "\n\nBienvenido a la batalla Personaje vs Personaje! (Fran y Boca dan empate)" + ConsoleColors.RESET);
+						+ "\n\nBienvenido a la batalla Personaje vs Personaje! (Fran y Boca dan empate)"
+						+ ConsoleColors.RESET);
 				System.out.println("\nIngrese el primer personaje a combatir: ");
 
 				String primerNombreDePersonaje = scanner.next();
@@ -258,7 +262,8 @@ public class Menu {
 			}
 			case 10: {
 				System.out.println(ConsoleColors.GREEN_BRIGHT
-						+ "\n\nBienvenido a la batalla Personaje vs Liga! (Boca y xmen dan empate)" + ConsoleColors.RESET);
+						+ "\n\nBienvenido a la batalla Personaje vs Liga! (Boca y xmen dan empate)"
+						+ ConsoleColors.RESET);
 				System.out.println("\nIngrese el personaje a combatir: ");
 
 				String nombreDePersonaje = scanner.next();
@@ -295,9 +300,9 @@ public class Menu {
 				break;
 			}
 			case 12:
-                String heroe = ingresarPersonaje(scanner);
-                String caracteristica = ingresarCaracteristica(scanner);
-				Reportes.personajesVencedoresPorCaracteristica(personajes,heroe,caracteristica);
+				String heroe = ingresarPersonaje(scanner);
+				String caracteristica = ingresarCaracteristica(scanner);
+				Reportes.personajesVencedoresPorCaracteristica(personajes, heroe, caracteristica);
 				break;
 			case 13:
 				String[] caracteristicas = ingresarCaracteristicas(scanner);
