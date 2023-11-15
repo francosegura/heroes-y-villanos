@@ -1,6 +1,7 @@
 package personajes;
 
 import utils.ConsoleColors;
+import utils.Tipos;
 
 import java.util.ArrayList;
 
@@ -52,10 +53,6 @@ public class Personaje {
 		this.caracteristicas = caracteristicas;
 	}
 
-	public enum Tipos {
-		Heroe, Villano
-	}
-
 	@Override
 	public String toString() {
 		return ConsoleColors.BLUE_BRIGHT
@@ -76,9 +73,9 @@ public class Personaje {
 		int tipoDePersonaje = Menu.scanner.nextInt();
 		String tipoDePersonajeTexto;
 		if (tipoDePersonaje == 1) {
-			tipoDePersonajeTexto = "Heroe";
+			tipoDePersonajeTexto = Tipos.HEROE;
 		} else if (tipoDePersonaje == 2) {
-			tipoDePersonajeTexto = "Villano";
+			tipoDePersonajeTexto = Tipos.VILLANO;
 		} else {
 			System.out.println("\n" + ConsoleColors.RED_BRIGHT
 					+ "Opcion incorrecta. Volviendo al menu.... " + ConsoleColors.RESET);

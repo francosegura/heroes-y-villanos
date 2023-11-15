@@ -2,6 +2,9 @@ package personajes;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import utils.Tipos;
+
 import java.util.ArrayList;
 
 public class PersonajeTest {
@@ -13,16 +16,16 @@ public class PersonajeTest {
     @Before
     public void setUp() {
         caracteristicasHeroe = new Caracteristicas(10, 20, 30, 40);
-        heroe = new Personaje("Heroe", "Bruce Wayne", "Batman", caracteristicasHeroe);
+        heroe = new Personaje(Tipos.HEROE, "Bruce Wayne", "Batman", caracteristicasHeroe);
 
         caracteristicasVillano = new Caracteristicas(15, 25, 35, 45);
-        villano = new Personaje("Villano", "Joker", "Joker", caracteristicasVillano);
+        villano = new Personaje(Tipos.VILLANO, "Joker", "Joker", caracteristicasVillano);
     }
 
     @Test
     public void testGetTipo() {
-        assertEquals("Heroe", heroe.getTipo());
-        assertEquals("Villano", villano.getTipo());
+        assertEquals(Tipos.HEROE, heroe.getTipo());
+        assertEquals(Tipos.VILLANO, villano.getTipo());
     }
 
     @Test

@@ -11,6 +11,7 @@ import java.util.Scanner;
 import liga.Liga;
 import personajes.Caracteristicas;
 import personajes.Personaje;
+import utils.Tipos;
 
 public class Archivo {
 	public static ArrayList<Personaje> cargarPersonajesDesdeArchivo(String file) {
@@ -22,7 +23,7 @@ public class Archivo {
 			while (scanner.hasNextLine()) {
 				String linea = scanner.nextLine();
 				String[] datos = linea.split(", ");
-				if (datos[0].equals("Heroe") || datos[0].equals("Villano")) {
+				if (datos[0].equals(Tipos.HEROE) || datos[0].equals(Tipos.VILLANO)) {
 					String tipo = datos[0];
 					String nombreReal = datos[1];
 					String nombreFicticio = datos[2];

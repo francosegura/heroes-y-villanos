@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import personajes.Caracteristicas;
 import personajes.Personaje;
+import utils.Tipos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class LigaTest {
 
         // Crear personaje y agregarlo a la liga
         Caracteristicas caracteristicasHeroe = new Caracteristicas(10, 20, 30, 40);
-        Personaje heroe = new Personaje("Heroe", "Bruce Wayne", "Batman", caracteristicasHeroe);
+        Personaje heroe = new Personaje(Tipos.HEROE, "Bruce Wayne", "Batman", caracteristicasHeroe);
         personajesPrecargados.add(heroe);
 
         assertEquals(heroe, liga.agregarMiembro("Batman", ligasPrecargadas, personajesPrecargados));
@@ -34,7 +35,7 @@ public class LigaTest {
         assertNull(liga.agregarMiembro("Spiderman", ligasPrecargadas, personajesPrecargados));
 
         // Intentar agregar un miembro de tipo diferente
-        Personaje villano = new Personaje("Villano", "Joker", "Joker", caracteristicasHeroe);
+        Personaje villano = new Personaje(Tipos.VILLANO, "Joker", "Joker", caracteristicasHeroe);
         personajesPrecargados.add(villano);
 
         //assertFail(liga.agregarMiembro("Joker", ligasPrecargadas, personajesPrecargados));
@@ -45,14 +46,14 @@ public class LigaTest {
         Liga liga = new Liga("Justice League");
 
         Caracteristicas caracteristicasHeroe1 = new Caracteristicas(10, 20, 30, 40);
-        Personaje heroe1 = new Personaje("Heroe", "Bruce Wayne", "Batman", caracteristicasHeroe1);
+        Personaje heroe1 = new Personaje(Tipos.HEROE, "Bruce Wayne", "Batman", caracteristicasHeroe1);
 
         Caracteristicas caracteristicasHeroe2 = new Caracteristicas(15, 25, 35, 45);
-        Personaje heroe2 = new Personaje("Heroe", "Clark Kent", "Superman", caracteristicasHeroe2);
+        Personaje heroe2 = new Personaje(Tipos.HEROE, "Clark Kent", "Superman", caracteristicasHeroe2);
 
         liga.agregarMiembro("Batman", new ArrayList<>(), new ArrayList<>(List.of(heroe1, heroe2)));
 
-        // Calcular promedio de características
+        // Calcular promedio de caracterï¿½sticas
         Caracteristicas promedio = liga.calcularPromedioCaracteristica();
 
         assertEquals(10.0, promedio.getVelocidad(), 0.01);
