@@ -150,17 +150,16 @@ public class Menu {
 				Archivo.guardarPersonajesEnArchivo(nombreArchivo, personajes);
 				break;
 			}
-			case 5:
-				// Scanner scanner = new Scanner(System.in);
-				// System.out.println("Por supuesto! Por favor indique el nombre del archivo:
-				// ");
-				// String nombreArchivo = scanner.next();
+			case 5: {
+				System.out.println("Por supuesto! Por favor indique el nombre del archivo: ");
+				String nombreArchivo = scanner.next();
 
-				ligas.addAll(Archivo.cargarLigasDesdeArchivo("ligas.in", ligas, personajes));
+				ligas.addAll(Archivo.cargarLigasDesdeArchivo(nombreArchivo, ligas, personajes));
 				System.out.println("\n\n" + ConsoleColors.GREEN_BRIGHT + "Felicidades" + ConsoleColors.RESET
 						+ "! Logramos cargar las siguientes ligas: \n");
 				imprimirLigas();
 				break;
+			}
 			case 6:
 				System.out.println("\n\nPor supuesto! Vayamos a crear una nueva liga");
 				Liga nuevaLiga = Liga.crearLiga(ligas, personajes);
